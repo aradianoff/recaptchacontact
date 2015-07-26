@@ -1,12 +1,12 @@
 # Grav reCAPTCHA Contact Plugin
 
-`reCAPTCHA Contact` is a [Grav](http://github.com/getgrav/grav) v0.9.33+ plugin based in the [Simple Contact](https://github.com/nunopress/grav-plugin-simple_contact) plugin from NunoPress LLC that adds a contact form in Grav pages with [Google reCAPTCHA](https://www.google.com/recaptcha/) validation to filter Spam Robots and multilang support. Currently both Spanish (es) and English (en) are supported by default. 
+`reCAPTCHA Contact` is a [Grav](http://github.com/getgrav/grav) v0.9.33+ plugin based in the [Simple Contact](https://github.com/nunopress/grav-plugin-simple_contact) plugin from NunoPress LLC that adds a contact form in Grav pages with [Google reCAPTCHA](https://www.google.com/recaptcha/) validation to filter Spam Robots and multilang support. Currently both Spanish (es) and English (en) translations are included by default.
 
 # Installation
 
 Installing the plugin can be done in one of two ways. Our GPM (Grav Package Manager) installation method enables you to quickly and easily install the plugin with a simple terminal command, while the manual method enables you to do so via a zip file.
 
-## GPM Installation (Currently not available)
+## GPM Installation (preferred)
 
 The simplest way to install this plugin is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm) through your system's Terminal (also called the command line).  From the root of your Grav install type:
 
@@ -30,15 +30,19 @@ The plugin comes with some sensible default configuration that you can see in th
 
 # Options in `recaptchacontact.yaml`
 
-    enabled: (true|false)               // Enables or Disables the entire plugin for all pages.
-    default_lang: en                    // default_lang in case there is no multilang support in the installation
+```
+enabled: (true|false)               // Enables or Disables the entire plugin for all pages.
+default_lang: en                    // default_lang in case there is no multilang support in the installation
 
 grecaptcha_sitekey: "your reCAPTCHA site key" // override in your /user/config/plugins/recaptchacontact.yaml
 grecaptcha_secret: "secret-g-recaptcha-key" // override in your /user/config/plugins/recaptchacontact.yaml and remember not to keep it in a public repository
+```
 
+> **WARNING:** For the reCAPTCHA to work you have to copy [recaptchacontact.yaml](recaptchacontact.yaml) in your `/user/config/plugins` folder and set your keys. If not, it will not work.
 
 # Options in `languages.yaml` 
 
+```
     FORM_LEGEND: "Contact me"                       // Form Legend
     SUBJECT: "New contact from Grav site!"          // Subject for email.
     RECIPIENT: "inesnaya@aradianoff.com"            // Email address.
@@ -67,8 +71,8 @@ grecaptcha_secret: "secret-g-recaptcha-key" // override in your /user/config/plu
       SUCCESS: "Thank You! Your message has been sent."
       ERROR: "Oops! There was a problem with your submission. Please complete the form and try again."
       FAIL: "Oops! Something went wrong and we couldn't send your message."
+```
 
-To customize the plugin, you first need to create an override config. To do so, create the folder `user/config/plugins` (if it doesn't exist already) and copy the [recaptchacontact.yaml](recaptchacontact.yaml) config file in there and then make your edits.
 If you want to add your own translations of the `languages.yaml`variables or modify the existing ones you can do so by creating a `languages`folder in your `user`folder and creating a `.yaml` file for the languages you want (ex. `es.yaml`) adding the above variables to the file and changing them.
 
 # Usage
@@ -84,51 +88,13 @@ If you want to add the contact form to a page your can do it by adding to the pa
 
 With this method you use the config file and languages file options (either the default ones or your customized ones if they exist. This will add the contact form at the end of the contents of your page. 
 
-
-Also you can override the default options per-page (currently not working):
-
-    ---
-    title: 'My "Page"'
-
-    recaptchacontact:
-      subject: "New contact from your Grav site!"
-      recipient: "pippo@example.it"
-
-      fields:
-        name:
-          label: "Name"
-          placeholder: "Add your name"
-
-        email:
-          label: "Email"
-          placeholder: "Add your email"
-
-        message:
-          label: "Message"
-          placeholder: "Add your message"
-
-        antispam:
-          label: "Antispam"
-          placeholder: "Please leave this field empty for Antispam"
-
-        submit:
-          label: "Submit"
-
-      messages:
-        success: "Thank You! Your message has been sent."
-        error: "Oops! There was a problem with your submission. Please complete the form and try again."
-        fail: "Oops! Something went wrong and we couldn't send your message."
-    ---
-
-    # "Lorem ipsum dolor sit amet"
-
 # Updating
 
 As development for this plugin continues, new versions may become available that add additional features and functionality, improve compatibility with newer Grav releases, and generally provide a better user experience. Updating this plugin is easy, and can be done through Grav's GPM system, as well as manually.
 
-## GPM Update (Currently not available)
+## GPM Update (preferred)
 
-The simplest way to update this plugin is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm). You can do this with this by navigating to the root directory of your Grav install using your system's Terminal (also called command line) and typing the following:
+The simplest way to update this plugin is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm). You can do this by navigating to the root directory of your Grav install using your system's Terminal (also called command line) and typing the following:
 
     bin/gpm update recaptchacontact
 

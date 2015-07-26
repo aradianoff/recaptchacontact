@@ -53,7 +53,6 @@ class   ReCaptchaContactPlugin extends Plugin
     {
         if ($this->grav['config']->get('plugins.recaptchacontact.enabled')) {
             $this->grav['assets']->addCss('plugin://recaptchacontact/assets/css/style.css');
-            $this->grav['assets']->addJs('plugin://recaptchacontact/assets/js/script.js');
         }
     }
     
@@ -89,7 +88,7 @@ class   ReCaptchaContactPlugin extends Plugin
                 } else {
                     $old_content = $page->content();
 
-                    $template = 'recaptchaform.html.twig';
+                    $template = 'partials/recaptchaform.html.twig';
                     $data = [
                         'recaptchacontact' => $options,
                         'page' => $page

@@ -26,7 +26,7 @@
                 </div>
                 
                 <!-- Recaptcha -->
-                <div class="g-recaptcha" data-sitekey={{ plugins.recaptchacontact.grecaptcha_sitekey }}></div>
+                <div class="g-recaptcha" data-sitekey={{ recaptchacontact.grecaptcha_sitekey }}></div>
                 
                  <!-- Antispam input-->
                  <div class="form-group antispam-div">
@@ -44,3 +44,6 @@
        </form>
     </div>
 </div>
+<script>
+    $.getScript("https://www.google.com/recaptcha/api.js?hl={{ grav.language.getActive ?: recaptchacontact.default_lang }}");
+</script>
