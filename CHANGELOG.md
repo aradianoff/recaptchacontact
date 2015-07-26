@@ -1,7 +1,7 @@
-# v1.0.5
-## 07/24/2015
+# v1.0.0
+## 07/26/2015
 
-2. [](#new)
+1. [](#new)
     * Added mutilanguage support. `languages.yaml` file and translate filters to the template.
 
 

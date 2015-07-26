@@ -1,8 +1,24 @@
-<?php namespace Grav\Plugin;
+<?php 
+/**
+ * reCAPTCHA Contact v1.0.1
+ *
+ * This plugin adds contact form features for sending email with 
+ * google reCAPTCHA 2.0  validation.
+ *
+ * Dual licensed under the MIT license, see LICENSE.
+ *
+ * @package     recaptchacontact
+ * @version     1.0.0
+ * @link        <https://github.com/aradianoff/recaptchacontact>
+ * @author      Inés Naya <inesnaya@aradianoff.com>
+ * @copyright   2015, Inés Naya - aRadianOff
+ * @license     <http://opensource.org/licenses/MIT>        MIT
+ */
+ 
+namespace Grav\Plugin;
 
 use Grav\Common\Page\Page;
 use Grav\Common\Plugin;
-use Grav\Common\Language\Language;
 
 class   ReCaptchaContactPlugin extends Plugin
 {
@@ -34,24 +50,24 @@ class   ReCaptchaContactPlugin extends Plugin
 
     public function onTwigSiteVariables()
     {
-        if ($this->grav['config']->get('plugins.recaptcha-contact.enabled')) {
-            $this->grav['assets']->addCss('plugin://recaptcha-contact/assets/css/style.css');
-            $this->grav['assets']->addJs('plugin://recaptcha-contact/assets/js/script.js');
+        if ($this->grav['config']->get('plugins.recaptchacontact.enabled')) {
+            $this->grav['assets']->addCss('plugin://recaptchacontact/assets/css/style.css');
+            $this->grav['assets']->addJs('plugin://recaptchacontact/assets/js/script.js');
         }
     }
     
     public function onPageInitialized()
     {      
         $language = $this->grav['language'];         
-        $message_success = $language->translate(['RECAPTCHA-CONTACT.MESSAGES.SUCCESS'], null, true);
-        $message_error = $language->translate(['RECAPTCHA-CONTACT.MESSAGES.ERROR'], null, true);
-        $message_fail = $language->translate(['RECAPTCHA-CONTACT.MESSAGES.FAIL'], null, true);  
+        $message_success = $language->translate(['RECAPTCHACONTACT.MESSAGES.SUCCESS'], null, true);
+        $message_error = $language->translate(['RECAPTCHACONTACT.MESSAGES.ERROR'], null, true);
+        $message_fail = $language->translate(['RECAPTCHACONTACT.MESSAGES.FAIL'], null, true);  
         
         $this->mergePluginConfig($this->grav['page']);
 
         $config = $this->grav['config'];
 
-        $options = $config->get('plugins.recaptcha-contact');
+        $options = $config->get('plugins.recaptchacontact');
 
         if ($options['enabled']) {
             $page   = $this->grav['page'];
@@ -74,7 +90,7 @@ class   ReCaptchaContactPlugin extends Plugin
 
                     $template = 'form.html.twig';
                     $data = [
-                        'recaptcha-contact' => $options,
+                        'recaptchacontact' => $options,
                         'page' => $page
                     ];
 
@@ -112,7 +128,7 @@ class   ReCaptchaContactPlugin extends Plugin
         $antispam = $form_data['antispam'];
         
         $grecaptcha = $form_data['g-recaptcha-response'];
-        $secretkey = $this->grav['config']->get('plugins.recaptcha-contact.grecaptcha_secret');
+        $secretkey = $this->grav['config']->get('plugins.recaptchacontact.grecaptcha_secret');
         if (!empty($grecaptcha)) {
            $response=json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretkey."&response=".$grecaptcha), true);
         }
@@ -145,11 +161,11 @@ class   ReCaptchaContactPlugin extends Plugin
     protected function sendEmail()
     {
         $form   = $this->filterFormData($_POST);
-        $options = $this->grav['config']->get('plugins.recaptcha-contact');
+        $options = $this->grav['config']->get('plugins.recaptchacontact');
 
         $language = $this->grav['language']; 
-        $recipient  = $language->translate(['RECAPTCHA-CONTACT.RECIPIENT'], null, true); 
-        $subject    = $language->translate(['RECAPTCHA-CONTACT.SUBJECT'], null, true);  
+        $recipient  = $language->translate(['RECAPTCHACONTACT.RECIPIENT'], null, true); 
+        $subject    = $language->translate(['RECAPTCHACONTACT.SUBJECT'], null, true);  
 
         $email_content = "Name: {$form['name']}\n";
         $email_content .= "Email: {$form['email']}\n\n";
@@ -162,16 +178,15 @@ class   ReCaptchaContactPlugin extends Plugin
 
     private function mergePluginConfig( Page $page )
     {
-        $defaults = (array)$this->grav['config']->get('plugins.recaptcha-contact');
-
-        if (isset( $page->header()->recaptcha-contact )) {
-            if (is_array($page->header()->recaptcha-contact)) {
-                $this->grav['config']->set('plugins.recaptcha-contact', array_replace_recursive($defaults, $page->header()->recaptcha-contact));
+        $defaults = (array)$this->grav['config']->get('plugins.recaptchacontact');
+        if (isset($page->header()->recaptchacontact)) {
+            if (is_array($page->header()->recaptchacontact)) {
+                $this->grav['config']->set('plugins.recaptchacontact', array_replace_recursive($defaults, $page->header()->recaptchacontact));
             } else {
-                $this->grav['config']->set('plugins.recaptcha-contact.enabled', $page->header()->recaptcha-contact);
+                $this->grav['config']->set('plugins.recaptchacontact.enabled', $page->header()->recaptchacontact);
             }
         } else {
-            $this->grav['config']->set('plugins.recaptcha-contact.enabled', false);
+            $this->grav['config']->set('plugins.recaptchacontact.enabled', false);
         }
     }
 }

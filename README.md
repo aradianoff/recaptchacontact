@@ -10,31 +10,31 @@ Installing the plugin can be done in one of two ways. Our GPM (Grav Package Mana
 
 The simplest way to install this plugin is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm) through your system's Terminal (also called the command line).  From the root of your Grav install type:
 
-    bin/gpm install recaptcha-contact
+    bin/gpm install recaptchacontact
 
-This will install the `reCAPTCHA Contact` plugin into your `/user/plugins` directory within Grav. Its files can be found under `/your/site/grav/user/plugins/recaptcha-contact`.
+This will install the `reCAPTCHA Contact` plugin into your `/user/plugins` directory within Grav. Its files can be found under `/your/site/grav/user/plugins/recaptchacontact`.
 
 ## Manual Installation
 
-To install this plugin, just download the zip version of this repository and unzip it under `/your/site/grav/user/plugins`. Then, rename the folder to `recaptcha-contact`. You can find these files either on [GetGrav.org](http://getgrav.org/downloads/plugins#extras) or the [reCAPTCHA Contact GitHub repo](https://github.com/aradianoff/recaptcha-contact).
+To install this plugin, just download the zip version of this repository and unzip it under `/your/site/grav/user/plugins`. Then, rename the folder to `recaptchacontact`. You can find these files either on [GetGrav.org](http://getgrav.org/downloads/plugins#extras) or the [reCAPTCHA Contact GitHub repo](https://github.com/aradianoff/recaptchacontact).
 
 You should now have all the plugin files under
 
-    /your/site/grav/user/plugins/recaptcha-contact
+    /your/site/grav/user/plugins/recaptchacontact
 
 >> NOTE: This plugin is a modular component for Grav which requires [Grav](http://github.com/getgrav/grav), the [Error](https://github.com/getgrav/grav-plugin-error) and [Problems](https://github.com/getgrav/grav-plugin-problems) plugins, and a theme to be installed in order to operate. It also requires having at least an outgoing mailserver on your server side (to send the emails) and a [reCAPTCHA API key](www.google.com/recaptcha/) for your site.
 
 # Configuration
 
-The plugin comes with some sensible default configuration that you can see in the `recaptcha-contact.yaml` and `languages.yaml` files of the plugin, that are pretty self explanatory:
+The plugin comes with some sensible default configuration that you can see in the `recaptchacontact.yaml` and `languages.yaml` files of the plugin, that are pretty self explanatory:
 
-# Options in `recaptcha-contact.yaml`
+# Options in `recaptchacontact.yaml`
 
     enabled: (true|false)               // Enables or Disables the entire plugin for all pages.
     default_lang: en                    // default_lang in case there is no multilang support in the installation
 
-grecaptcha_sitekey: "your reCAPTCHA site key" // override in your /user/config/plugins/recaptcha-contact.yaml
-grecaptcha_secret: "secret-g-recaptcha-key" // override in your /user/config/plugins/recaptcha-contact.yaml and remember not to keep it in a public repository
+grecaptcha_sitekey: "your reCAPTCHA site key" // override in your /user/config/plugins/recaptchacontact.yaml
+grecaptcha_secret: "secret-g-recaptcha-key" // override in your /user/config/plugins/recaptchacontact.yaml and remember not to keep it in a public repository
 
 
 # Options in `languages.yaml` 
@@ -68,7 +68,7 @@ grecaptcha_secret: "secret-g-recaptcha-key" // override in your /user/config/plu
       ERROR: "Oops! There was a problem with your submission. Please complete the form and try again."
       FAIL: "Oops! Something went wrong and we couldn't send your message."
 
-To customize the plugin, you first need to create an override config. To do so, create the folder `user/config/plugins` (if it doesn't exist already) and copy the [recaptcha-contact.yaml](recaptcha-contact.yaml) config file in there and then make your edits.
+To customize the plugin, you first need to create an override config. To do so, create the folder `user/config/plugins` (if it doesn't exist already) and copy the [recaptchacontact.yaml](recaptchacontact.yaml) config file in there and then make your edits.
 If you want to add your own translations of the `languages.yaml`variables or modify the existing ones you can do so by creating a `languages`folder in your `user`folder and creating a `.yaml` file for the languages you want (ex. `es.yaml`) adding the above variables to the file and changing them.
 
 # Usage
@@ -77,7 +77,7 @@ If you want to add the contact form to a page your can do it by adding to the pa
     ---
     title: 'My "Page"'
 
-    recaptcha-contact: true
+    recaptchacontact: true
     ---
 
     # "Lorem ipsum dolor sit amet"
@@ -90,7 +90,7 @@ Also you can override the default options per-page (currently not working):
     ---
     title: 'My "Page"'
 
-    recaptcha-contact:
+    recaptchacontact:
       subject: "New contact from your Grav site!"
       recipient: "pippo@example.it"
 
@@ -130,7 +130,7 @@ As development for this plugin continues, new versions may become available that
 
 The simplest way to update this plugin is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm). You can do this with this by navigating to the root directory of your Grav install using your system's Terminal (also called command line) and typing the following:
 
-    bin/gpm update recaptcha-contact
+    bin/gpm update recaptchacontact
 
 This command will check your Grav install to see if your plugin is due for an update. If a newer release is found, you will be asked whether or not you wish to update. To continue, type `y` and hit enter. The plugin will automatically update and clear Grav's cache.
 
@@ -138,9 +138,9 @@ This command will check your Grav install to see if your plugin is due for an up
 
 Manually updating this plugin is pretty simple. Here is what you will need to do to get this done:
 
-* Delete the `your/site/user/plugins/recaptcha-contact` directory.
-* Download the new version of the plugin from either [GetGrav.org](http://getgrav.org/downloads/plugins#extras) or the [reCAPTCHA Contact GitHub repo](https://github.com/aradianoff/recaptcha-contact).
-* Unzip the zip file in `your/site/user/plugins` and rename the resulting folder to `recaptcha-contact`.
+* Delete the `your/site/user/plugins/recaptchacontact` directory.
+* Download the new version of the plugin from either [GetGrav.org](http://getgrav.org/downloads/plugins#extras) or the [reCAPTCHA Contact GitHub repo](https://github.com/aradianoff/recaptchacontact).
+* Unzip the zip file in `your/site/user/plugins` and rename the resulting folder to `recaptchacontact`.
 * Clear the Grav cache. The simplest way to do this is by going to the root Grav directory in terminal and typing `bin/grav clear-cache`.
 
 > Note: Any changes you have made to any of the files listed under this directory will also be removed and replaced by the new set. Any files located elsewhere (for example a YAML settings file placed in `user/config/plugins`) will remain intact.

@@ -1,13 +1,13 @@
-name: G-Recapthca Contact Form
+name: reCAPTCHA Contact
 version: 1.0.0
-description: "This plugin adds contact form features for sending email with google recaptcha 2.0 validation."
+description: "This plugin adds contact form features for sending email with google reCAPTCHA 2.0 validation."
 icon: paper-plane
 author:
   name: Ines Naya - aRadianOff
   email: inesnaya@aradianoff.com
   url: http://aradianoff.com
-homepage: https://github.com/aradianoff/recaptcha-contact
+homepage: https://github.com/aradianoff/recaptchacontact
 
 keywords: "contact, plugin, g-recaptcha"
-bugs: https://github.com/aradianoff/recaptcha-contact/issues
+bugs: https://github.com/aradianoff/recaptchacontact/issues
 license: MIT

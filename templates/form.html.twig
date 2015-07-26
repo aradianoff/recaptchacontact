@@ -1,43 +1,43 @@
 <div id="contact" class="container">
     <div class="row">
-       <form class="form-horizontal" action="{{ page.slug }}" method="post" id="recaptcha-contact">
+       <form class="form-horizontal" action="{{ page.slug }}" method="post" id="recaptchacontact">
           <fieldset>
-             <legend class="legend "><h3>{{ 'RECAPTCHA-CONTACT.FORM_LEGEND'|t }}</h3></legend>
+             <legend class="legend "><h3>{{ 'RECAPTCHACONTACT.FORM_LEGEND'|t }}</h3></legend>
 
                 {# @todo: you can use to integrate with ajax response #}
-                <div id="recaptcha-contact-messages"></div>
+                <div id="recaptchacontact-messages"></div>
 
                 <!-- Name input-->
                 <div class="form-group">
-                   <label class="control-label" for="name">{{ 'RECAPTCHA-CONTACT.FIELDS.NAME.LABEL'|t }}</label>
-                   <input id="name" name="name" type="text" placeholder="{{ 'RECAPTCHA-CONTACT.FIELDS.NAME.PLACEHOLDER'|t }}" class="form-control" />
+                   <label class="control-label" for="name">{{ 'RECAPTCHACONTACT.FIELDS.NAME.LABEL'|t }}</label>
+                   <input id="name" name="name" type="text" placeholder="{{ 'RECAPTCHACONTACT.FIELDS.NAME.PLACEHOLDER'|t }}" class="form-control" />
                 </div>
 
                 <!-- Email input-->
                 <div class="form-group">
-                   <label class="control-label" for="email">{{ 'RECAPTCHA-CONTACT.FIELDS.EMAIL.LABEL'|t }}</label>
-                   <input id="email" name="email" type="text" placeholder="{{ 'RECAPTCHA-CONTACT.FIELDS.EMAIL.PLACEHOLDER'|t }}" class="form-control" />
+                   <label class="control-label" for="email">{{ 'RECAPTCHACONTACT.FIELDS.EMAIL.LABEL'|t }}</label>
+                   <input id="email" name="email" type="text" placeholder="{{ 'RECAPTCHACONTACT.FIELDS.EMAIL.PLACEHOLDER'|t }}" class="form-control" />
                  </div>
 
                 <!-- Message body -->
                 <div class="form-group">
-                <label class="control-label" for="message">{{ 'RECAPTCHA-CONTACT.FIELDS.MESSAGE.LABEL'|t }}</label>
-                <textarea class="form-control" id="message" name="message" placeholder="{{ 'RECAPTCHA-CONTACT.FIELDS.MESSAGE.PLACEHOLDER'|t }}" rows="5"></textarea>
+                <label class="control-label" for="message">{{ 'RECAPTCHACONTACT.FIELDS.MESSAGE.LABEL'|t }}</label>
+                <textarea class="form-control" id="message" name="message" placeholder="{{ 'RECAPTCHACONTACT.FIELDS.MESSAGE.PLACEHOLDER'|t }}" rows="5"></textarea>
                 </div>
                 
                 <!-- Recaptcha -->
-                <div class="g-recaptcha" data-sitekey={{ plugins.recaptcha-contact.grecaptcha_sitekey }}></div>
+                <div class="g-recaptcha" data-sitekey={{ plugins.recaptchacontact.grecaptcha_sitekey }}></div>
                 
                  <!-- Antispam input-->
                  <div class="form-group antispam-div">
-                    <label class="control-label" for="antispam">{{ 'RECAPTCHA-CONTACT.FIELDS.ANTISPAM.LABEL'|t }}</label>
-                    <input id="antispam" name="antispam" type="text" placeholder="{{ 'RECAPTCHA-CONTACT.FIELDS.ANTISPAM.PLACEHOLDER'|t }}" class="form-control" />
+                    <label class="control-label" for="antispam">{{ 'RECAPTCHACONTACT.FIELDS.ANTISPAM.LABEL'|t }}</label>
+                    <input id="antispam" name="antispam" type="text" placeholder="{{ 'RECAPTCHACONTACT.FIELDS.ANTISPAM.PLACEHOLDER'|t }}" class="form-control" />
                  </div>
 
                  <!-- Form actions -->
                  <div class="form-group">
                     <div class="text-right">
-                        <button type="submit" class="button">{{ 'RECAPTCHA-CONTACT.FIELDS.SUBMIT.LABEL'|t }}</button>
+                        <button type="submit" class="button">{{ 'RECAPTCHACONTACT.FIELDS.SUBMIT.LABEL'|t }}</button>
                      </div>
                   </div>
           </fieldset>

@@ -1,5 +1,5 @@
 en:
-  RECAPTCHA-CONTACT:
+  RECAPTCHACONTACT:
     FORM_LEGEND: "Contact me"
     SUBJECT: "New contact from Grav site!"
     RECIPIENT: "inesnaya@aradianoff.com"
@@ -30,7 +30,7 @@ en:
       FAIL: "Oops! Something went wrong and we couldn't send your message."
     
 es:
-  RECAPTCHA-CONTACT:
+  RECAPTCHACONTACT:
     FORM_LEGEND: "Contacta conmigo"
     SUBJECT: "¡Nuevo contacto desde tu sitio GRAV!"
     RECIPIENT: "inesnaya@aradianoff.com"
