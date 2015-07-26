@@ -19,6 +19,7 @@ namespace Grav\Plugin;
 
 use Grav\Common\Page\Page;
 use Grav\Common\Plugin;
+use Grav\Common\Languages;
 
 class   ReCaptchaContactPlugin extends Plugin
 {
@@ -88,7 +89,7 @@ class   ReCaptchaContactPlugin extends Plugin
                 } else {
                     $old_content = $page->content();
 
-                    $template = 'form.html.twig';
+                    $template = 'recaptchaform.html.twig';
                     $data = [
                         'recaptchacontact' => $options,
                         'page' => $page
@@ -178,7 +179,8 @@ class   ReCaptchaContactPlugin extends Plugin
 
     private function mergePluginConfig( Page $page )
     {
-        $defaults = (array)$this->grav['config']->get('plugins.recaptchacontact');
+        $defaults = (array) $this->grav['config']->get('plugins.recaptchacontact');
+        
         if (isset($page->header()->recaptchacontact)) {
             if (is_array($page->header()->recaptchacontact)) {
                 $this->grav['config']->set('plugins.recaptchacontact', array_replace_recursive($defaults, $page->header()->recaptchacontact));
