@@ -1,0 +1,61 @@
+en:
+  RECAPTCHA-CONTACT:
+    FORM_LEGEND: "Contact me"
+    SUBJECT: "New contact from Grav site!"
+    RECIPIENT: "inesnaya@aradianoff.com"
+
+    FIELDS:
+      NAME:
+        LABEL: "Name"
+        PLACEHOLDER: "Add your name"
+
+      EMAIL:
+        LABEL: "Email"
+        PLACEHOLDER: "Add your email"
+
+      MESSAGE:
+        LABEL: "Message"
+        PLACEHOLDER: "Add your message"
+
+      ANTISPAM:
+        LABEL: "Antispam"
+        PLACEHOLDER: "Please leave this field empty for Antispam"
+
+      SUBMIT:
+        LABEL: "Submit"
+
+    MESSAGES:
+      SUCCESS: "Thank You! Your message has been sent."
+      ERROR: "Oops! There was a problem with your submission. Please complete the form and try again."
+      FAIL: "Oops! Something went wrong and we couldn't send your message."
+    
+es:
+  RECAPTCHA-CONTACT:
+    FORM_LEGEND: "Contacta conmigo"
+    SUBJECT: "¡Nuevo contacto desde tu sitio GRAV!"
+    RECIPIENT: "inesnaya@aradianoff.com"
+
+    FIELDS:
+      NAME:
+        LABEL: "Nombre"
+        PLACEHOLDER: "Añade tu nombre"
+
+      EMAIL:
+        LABEL: "Email"
+        PLACEHOLDER: "Añade tu email"
+
+      MESSAGE:
+        LABEL: "Mensaje"
+        PLACEHOLDER: "Añade tu mensaje"
+
+      ANTISPAM:
+        LABEL: "Antispam"
+        PLACEHOLDER: "Por favor, deja este campo libre para bloquear el Spam"
+
+      SUBMIT:
+        LABEL: "Enviar"
+
+    MESSAGES:
+      SUCCESS: "¡Gracias! Tu mensaje ha sido enviado."
+      ERROR: "¡Uy! Hubo un problema con el envío. Por favor, rellena el formulario de nuevo."
+      FAIL: "¡Uy! Algo salió mal y no se pudo enviar el mensaje."

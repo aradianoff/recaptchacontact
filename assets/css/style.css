@@ -1,0 +1,12 @@
+.antispam-div { display: none; }
+
+#contact.container {
+    width: 50%;
+    margin: 0;
+}
+
+#contact .button {
+    float: right;
+    margin: 5px;
+}
+

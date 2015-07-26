@@ -1,0 +1,5 @@
+enabled: true
+default_lang: en
+
+grecaptcha_sitekey: "your reCAPTCHA site key" # override in your /user/config/plugins/recaptcha-contact.yaml
+grecaptcha_secret: "secret-g-recaptcha-key" # override in your /user/config/plugins/simple_contact.yaml and keep it in a non-public repository
