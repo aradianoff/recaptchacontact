@@ -8,7 +8,7 @@
  * Licensed under the MIT license, see LICENSE.
  *
  * @package     recaptchacontact
- * @version     1.0.0
+ * @version     1.0.1
  * @link        <https://github.com/aradianoff/recaptchacontact>
  * @author      Inés Naya <inesnaya@aradianoff.com>
  * @copyright   2015, Inés Naya - aRadianOff
