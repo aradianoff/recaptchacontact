@@ -58,7 +58,7 @@ class   ReCaptchaContactPlugin extends Plugin
     
     public function onPageInitialized()
     {      
-        $language = $this->grav['language'];         
+        $language = $this->grav['language'];        
         $message_success = $language->translate(['RECAPTCHACONTACT.MESSAGES.SUCCESS'], null, true);
         $message_error = $language->translate(['RECAPTCHACONTACT.MESSAGES.ERROR'], null, true);
         $message_fail = $language->translate(['RECAPTCHACONTACT.MESSAGES.FAIL'], null, true);  
