@@ -160,8 +160,8 @@ class   ReCaptchaContactPlugin extends Plugin
         $form   = $this->filterFormData($_POST);
         $options = $this->grav['config']->get('plugins.recaptchacontact');
         
-        $recipient  = $this->overwriteConfigVariable('plugins.recaptchacontact.recipient'],'RECAPTCHACONTACT.RECIPIENT'); 
-        $subject    = $this->overwriteConfigVariable('plugins.recaptchacontact.subject'],'RECAPTCHACONTACT.SUBJECT'); 
+        $recipient  = $this->overwriteConfigVariable('plugins.recaptchacontact.recipient','RECAPTCHACONTACT.RECIPIENT'); 
+        $subject    = $this->overwriteConfigVariable('plugins.recaptchacontact.subject','RECAPTCHACONTACT.SUBJECT'); 
         $email_content = "Name: {$form['name']}\n";
         $email_content .= "Email: {$form['email']}\n\n";
         $email_content .= "Message:\n{$form['message']}\n";
