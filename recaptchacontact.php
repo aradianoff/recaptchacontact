@@ -1,6 +1,6 @@
 <?php 
 /**
- * reCAPTCHA Contact v1.0.1
+ * reCAPTCHA Contact v1.0.2
  *
  * This plugin adds contact form features for sending email with 
  * google reCAPTCHA 2.0  validation.
@@ -8,7 +8,7 @@
  * Licensed under the MIT license, see LICENSE.
  *
  * @package     recaptchacontact
- * @version     1.0.1
+ * @version     1.0.2
  * @link        <https://github.com/aradianoff/recaptchacontact>
  * @author      Inés Naya <inesnaya@aradianoff.com>
  * @copyright   2015, Inés Naya - aRadianOff
@@ -160,8 +160,8 @@ class   ReCaptchaContactPlugin extends Plugin
         $form   = $this->filterFormData($_POST);
         $options = $this->grav['config']->get('plugins.recaptchacontact');
         
-        $recipient  = overwriteConfigVariable($options['recipient'],'RECAPTCHACONTACT.RECIPIENT'); 
-        $subject    = overwriteConfigVariable($options['subject'],'RECAPTCHACONTACT.SUBJECT'); 
+        $recipient  = $this->overwriteConfigVariable($options['recipient'],'RECAPTCHACONTACT.RECIPIENT'); 
+        $subject    = $this->overwriteConfigVariable($options['subject'],'RECAPTCHACONTACT.SUBJECT'); 
         $email_content = "Name: {$form['name']}\n";
         $email_content .= "Email: {$form['email']}\n\n";
         $email_content .= "Message:\n{$form['message']}\n";
