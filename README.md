@@ -45,7 +45,7 @@ grecaptcha_secret: "secret-g-recaptcha-key" // override in your /user/config/plu
 ```
     FORM_LEGEND: "Contact me"                       // Form Legend
     SUBJECT: "New contact from Grav site!"          // Subject for email.
-    RECIPIENT: "inesnaya@aradianoff.com"            // Email address.
+    RECIPIENT: "hello@example.com"            // Email address.
 
     FIELDS:                     // Default fields, you can translate the text.
       NAME:
@@ -78,6 +78,8 @@ If you want to add your own translations of the `languages.yaml`variables or mod
 ## Usage
 
 If you want to add the contact form to a page your can do it by adding to the page header:
+
+```
     ---
     title: 'My "Page"'
 
@@ -85,8 +87,36 @@ If you want to add the contact form to a page your can do it by adding to the pa
     ---
 
     # "Lorem ipsum dolor sit amet"
+```
 
-With this method you use the config file and languages file options (either the default ones or your customized ones if they exist. This will add the contact form at the end of the contents of your page. 
+With this method you use the config file and languages file options (either the default ones or your customized ones if they exist). This will add the contact form at the end of the contents of your page. 
+
+But if you want to overwrite any of the configuration variables (including those in the `recaptchacontact/languages.yaml` you can also do it in the page header as in:
+
+```
+    ---
+    title: 'My "Page"'
+
+    recaptchacontact: 
+      form_legend: "Another legend for the form"                       
+      subject: "Another subject form the email"          
+      recipient: "anotheremail@example.com"          
+      fields:                    
+        name:
+          label: "Another label for name"
+          placeholder: "Another placeholder for mail"
+      submit:
+        label: "Another Submit Label"
+
+      messages:              
+        success: "Hurray! You did it!"   
+    ---
+
+    # "Lorem ipsum dolor sit amet"
+```
+
+Just use the same structure as in the `languages.yaml`file but use lowercase letters instead of uppercase. 
+
 
 ## Updating
 

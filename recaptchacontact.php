@@ -5,7 +5,7 @@
  * This plugin adds contact form features for sending email with 
  * google reCAPTCHA 2.0  validation.
  *
- * Dual licensed under the MIT license, see LICENSE.
+ * Licensed under the MIT license, see LICENSE.
  *
  * @package     recaptchacontact
  * @version     1.0.0
@@ -19,7 +19,6 @@ namespace Grav\Plugin;
 
 use Grav\Common\Page\Page;
 use Grav\Common\Plugin;
-use Grav\Common\Languages;
 
 class   ReCaptchaContactPlugin extends Plugin
 {
@@ -57,17 +56,15 @@ class   ReCaptchaContactPlugin extends Plugin
     }
     
     public function onPageInitialized()
-    {      
-        $language = $this->grav['language'];        
-        $message_success = $language->translate(['RECAPTCHACONTACT.MESSAGES.SUCCESS'], null, true);
-        $message_error = $language->translate(['RECAPTCHACONTACT.MESSAGES.ERROR'], null, true);
-        $message_fail = $language->translate(['RECAPTCHACONTACT.MESSAGES.FAIL'], null, true);  
-        
-        $this->mergePluginConfig($this->grav['page']);
-
+    {    
+        $this->mergePluginConfig($this->grav['page']); 
         $config = $this->grav['config'];
+        $options = $config->get('plugins.recaptchacontact'); 
+     
+        $message_success = $this->overwriteConfigVariable('plugins.recaptchacontact.messages.success', 'RECAPTCHACONTACT.MESSAGES.SUCCESS');
+        $message_error = $this->overwriteConfigVariable('plugins.recaptchacontact.messages.error', 'RECAPTCHACONTACT.MESSAGES.ERROR');
+        $message_fail = $this->overwriteConfigVariable('plugins.recaptchacontact.messages.fail', 'RECAPTCHACONTACT.MESSAGES.FAIL');
 
-        $options = $config->get('plugins.recaptchacontact');
 
         if ($options['enabled']) {
             $page   = $this->grav['page'];
@@ -90,11 +87,11 @@ class   ReCaptchaContactPlugin extends Plugin
 
                     $template = 'partials/recaptchaform.html.twig';
                     $data = [
-                        'recaptchacontact' => $options,
-                        'page' => $page
+                      'recaptchacontact' => $options,
+                      'page' => $page
                     ];
 
-                    $page->content($old_content . $twig->twig()->render($template, $data));
+                    $page->content($old_content .$twig->processTemplate($template, $data));
                 }
             } else {
                 switch ($uri->param('send')) {
@@ -162,11 +159,9 @@ class   ReCaptchaContactPlugin extends Plugin
     {
         $form   = $this->filterFormData($_POST);
         $options = $this->grav['config']->get('plugins.recaptchacontact');
-
-        $language = $this->grav['language']; 
-        $recipient  = $language->translate(['RECAPTCHACONTACT.RECIPIENT'], null, true); 
-        $subject    = $language->translate(['RECAPTCHACONTACT.SUBJECT'], null, true);  
-
+        
+        $recipient  = overwriteConfigVariable($options['recipient'],'RECAPTCHACONTACT.RECIPIENT'); 
+        $subject    = overwriteConfigVariable($options['subject'],'RECAPTCHACONTACT.SUBJECT'); 
         $email_content = "Name: {$form['name']}\n";
         $email_content .= "Email: {$form['email']}\n\n";
         $email_content .= "Message:\n{$form['message']}\n";
@@ -190,4 +185,11 @@ class   ReCaptchaContactPlugin extends Plugin
             $this->grav['config']->set('plugins.recaptchacontact.enabled', false);
         }
     }
+    
+    private function overwriteConfigVariable($pageconfigvar, $langconfigvar)
+    {
+        $language = $this->grav['language']; 
+        return $this->grav['config']->get($pageconfigvar) ?: $language->translate([$langconfigvar], null, true);
+    }
+    
 }
