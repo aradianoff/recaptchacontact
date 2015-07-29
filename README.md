@@ -1,6 +1,6 @@
 # Grav reCAPTCHA Contact Plugin
 
-`reCAPTCHA Contact` is a [Grav](http://github.com/getgrav/grav) v0.9.33+ plugin based in the [Simple Contact](https://github.com/nunopress/grav-plugin-simple_contact) plugin from NunoPress LLC that adds a contact form in Grav pages with [Google reCAPTCHA](https://www.google.com/recaptcha/) validation to filter Spam Robots and multilang support. Currently Italian (it), Spanish (es) and English (en) translations are included by default in the `languages.yaml`.
+`reCAPTCHA Contact` is a [Grav](http://github.com/getgrav/grav) v0.9.33+ plugin based in the [Simple Contact](https://github.com/nunopress/grav-plugin-simple_contact) plugin from NunoPress LLC that adds a contact form in Grav pages with [Google reCAPTCHA](https://www.google.com/recaptcha/) validation to filter Spam Robots and multilang support. Currently Italian (it), Spanish (es), German (de) and English (en) translations are included by default in the `languages.yaml`.
 
 ## Installation
 
@@ -40,7 +40,7 @@ grecaptcha_secret: "secret-g-recaptcha-key" // override in your /user/config/plu
 
 > **WARNING:** For the reCAPTCHA to work you have to copy [recaptchacontact.yaml](recaptchacontact.yaml) in your `/user/config/plugins` folder and set your keys. If not, it will not work.
 
-### Options in `languages.yaml` 
+### Options in `languages.yaml`
 
 ```
     FORM_LEGEND: "Contact me"                       // Form Legend
@@ -89,7 +89,7 @@ If you want to add the contact form to a page your can do it by adding to the pa
     # "Lorem ipsum dolor sit amet"
 ```
 
-With this method you use the config file and languages file options (either the default ones or your customized ones if they exist). This will add the contact form at the end of the contents of your page. 
+With this method you use the config file and languages file options (either the default ones or your customized ones if they exist). This will add the contact form at the end of the contents of your page.
 
 But if you want to overwrite any of the configuration variables (including those in the `recaptchacontact/languages.yaml` you can also do it in the page header as in:
 
@@ -97,25 +97,25 @@ But if you want to overwrite any of the configuration variables (including those
     ---
     title: 'My "Page"'
 
-    recaptchacontact: 
-      form_legend: "Another legend for the form"                       
-      subject: "Another subject form the email"          
-      recipient: "anotheremail@example.com"          
-      fields:                    
+    recaptchacontact:
+      form_legend: "Another legend for the form"
+      subject: "Another subject form the email"
+      recipient: "anotheremail@example.com"
+      fields:
         name:
           label: "Another label for name"
           placeholder: "Another placeholder for mail"
       submit:
         label: "Another Submit Label"
 
-      messages:              
-        success: "Hurray! You did it!"   
+      messages:
+        success: "Hurray! You did it!"
     ---
 
     # "Lorem ipsum dolor sit amet"
 ```
 
-Just use the same structure as in the `languages.yaml`file but use lowercase letters instead of uppercase. 
+Just use the same structure as in the `languages.yaml`file but use lowercase letters instead of uppercase.
 
 
 ## Updating
@@ -143,5 +143,5 @@ Manually updating this plugin is pretty simple. Here is what you will need to do
 
 ## Acknowledgements:
 
-- @nunopress: For the [Simple Contact](https://github.com/nunopress/grav-plugin-simple_contact) plugins in which this one is based. 
+- @nunopress: For the [Simple Contact](https://github.com/nunopress/grav-plugin-simple_contact) plugins in which this one is based.
 - @iusvar: For the Italian translation.
