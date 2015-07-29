@@ -2,7 +2,7 @@ en:
   RECAPTCHACONTACT:
     FORM_LEGEND: "Contact me"
     SUBJECT: "New contact from Grav site!"
-    RECIPIENT: "inesnaya@aradianoff.com"
+    RECIPIENT: "hello@example.com"
 
     FIELDS:
       NAME:
@@ -33,7 +33,7 @@ es:
   RECAPTCHACONTACT:
     FORM_LEGEND: "Contacta conmigo"
     SUBJECT: "¡Nuevo contacto desde tu sitio GRAV!"
-    RECIPIENT: "inesnaya@aradianoff.com"
+    RECIPIENT: "hello@example.com"
 
     FIELDS:
       NAME:
@@ -64,7 +64,7 @@ it:
   RECAPTCHACONTACT:
     FORM_LEGEND: "Contattami"
     SUBJECT: "Nuovo contatto dal sito Grav!"
-    RECIPIENT: "inesnaya@aradianoff.com"
+    RECIPIENT: "hello@example.com"
 
     FIELDS:
       NAME:
