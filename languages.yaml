@@ -59,3 +59,35 @@ es:
       SUCCESS: "¡Gracias! Tu mensaje ha sido enviado."
       ERROR: "¡Uy! Hubo un problema con el envío. Por favor, rellena el formulario de nuevo."
       FAIL: "¡Uy! Algo salió mal y no se pudo enviar el mensaje."
+
+it:
+  RECAPTCHACONTACT:
+    FORM_LEGEND: "Contattami"
+    SUBJECT: "Nuovo contatto dal sito Grav!"
+    RECIPIENT: "inesnaya@aradianoff.com"
+
+    FIELDS:
+      NAME:
+        LABEL: "Nome"
+        PLACEHOLDER: "Aggiungi il tuo nome"
+
+      EMAIL:
+        LABEL: "Email"
+        PLACEHOLDER: "Aggiungi la tua email"
+
+      MESSAGE:
+        LABEL: "Messaggio"
+        PLACEHOLDER: "Aggiungi il tuo messaggio"
+
+      ANTISPAM:
+        LABEL: "Antispam"
+        PLACEHOLDER: "Si prega di lasciare il campo vuoto per Antispam"
+
+      SUBMIT:
+        LABEL: "Invia"
+
+    MESSAGES:
+      SUCCESS: "Grazie! Il tuo messaggio è stato inviato."
+      ERROR: "Oh! C'è stato un problema durante l'invio. Si prega di compilare il modulo e riprovare."
+      FAIL: "Oh! Qualcosa non ha funzionato perciò il tuo messaggio non potrà essere inviato."
+    
