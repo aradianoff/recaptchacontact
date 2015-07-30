@@ -145,3 +145,4 @@ Manually updating this plugin is pretty simple. Here is what you will need to do
 
 - @nunopress: For the [Simple Contact](https://github.com/nunopress/grav-plugin-simple_contact) plugins in which this one is based.
 - @iusvar: For the Italian translation.
+- @Sommerregen: For the German translation.
