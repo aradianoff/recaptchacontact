@@ -1,3 +1,8 @@
+#v1.0.3
+## 08/02/2015
+
+1. [](#new) Added German and Italian translations.
+
 #v1.0.2
 ## 07/28/2015
 
