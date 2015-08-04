@@ -3,7 +3,7 @@ version: 1.0.4
 description: "This plugin adds contact form features for sending email with google reCAPTCHA 2.0 validation."
 icon: paper-plane-o
 author:
-  name: Ines Naya - aRadianOff
+  name: aRadianOff
   email: inesnaya@aradianoff.com
   url: http://aradianoff.com
 homepage: https://github.com/aradianoff/recaptchacontact
