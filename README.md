@@ -43,6 +43,7 @@ grecaptcha_secret: "secret-g-recaptcha-key" // override in your /user/config/plu
 ### Options in `languages.yaml`
 
 ```
+  RECAPTCHACONTACT:
     FORM_LEGEND: "Contact me"                       // Form Legend
     SUBJECT: "New contact from Grav site!"          // Subject for email.
     RECIPIENT: "hello@example.com"            // Email address.
@@ -73,7 +74,7 @@ grecaptcha_secret: "secret-g-recaptcha-key" // override in your /user/config/plu
       FAIL: "Oops! Something went wrong and we couldn't send your message."
 ```
 
-If you want to add your own translations of the `languages.yaml`variables or modify the existing ones you can do so by creating a `languages`folder in your `user`folder and creating a `.yaml` file for the languages you want (ex. `es.yaml`) adding the above variables to the file and changing them.
+If you want to add your own translations of the `languages.yaml`variables or modify the existing ones you can do so by creating a `languages`folder in your `user`folder and creating a `.yaml` file for the languages you want (ex. `es.yaml`) adding the above variables to the file and customizing their values.
 
 ## Usage
 
