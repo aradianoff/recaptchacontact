@@ -1,6 +1,6 @@
 # Grav reCAPTCHA Contact Plugin
 
-[![Release](https://img.shields.io/github/release/aradianoff/recaptchacontact.svg)][project] [![Issues](https://img.shields.io/github/issues/aradianoff/recaptchacontact.svg)][issues] [![Dual license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE "License")
+[![Release](https://img.shields.io/github/release/aradianoff/recaptchacontact.svg)](project) [![Issues](https://img.shields.io/github/issues/aradianoff/recaptchacontact.svg)](issues) [![Dual license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE "License")
 
 `reCAPTCHA Contact` is a [Grav](http://github.com/getgrav/grav) v0.9.33+ plugin based in the [Simple Contact](https://github.com/nunopress/grav-plugin-simple_contact) plugin from NunoPress LLC that adds a contact form in Grav pages with [Google reCAPTCHA](https://www.google.com/recaptcha/) validation to filter Spam Robots and multilang support. Currently Italian (it), Spanish (es), German (de) and English (en) translations are included by default in the `languages.yaml`.
 
