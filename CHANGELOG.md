@@ -1,3 +1,11 @@
+# v1.0.6
+## 30/08/2015
+
+1. [](#improved) 
+    * Added blueprints for Grav Admin plugin
+2. [](#new) 
+    * Now it works with modular pages.
+
 # v1.0.5
 ## 08/07/2015
 
