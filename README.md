@@ -4,6 +4,8 @@
 
 `reCAPTCHA Contact` is a [Grav](http://github.com/getgrav/grav) v0.9.33+ plugin based in the [Simple Contact](https://github.com/nunopress/grav-plugin-simple_contact) plugin from NunoPress LLC that adds a contact form in Grav pages with [Google reCAPTCHA](https://www.google.com/recaptcha/) validation to filter Spam Robots and multilang support. Currently Italian (it), Spanish (es), German (de) and English (en) translations are included by default in the `languages.yaml`.
 
+** Since v 1.0.6 [this line in recapthcha.php](https://github.com/aradianoff/recaptchacontact/blob/master/recaptchacontact.php#L61) causes the plugin to depend on php 5.5. Previous versions of PHP will cause the plugin to break. ** 
+
 ## Installation
 
 Installing the plugin can be done in one of two ways. Our GPM (Grav Package Manager) installation method enables you to quickly and easily install the plugin with a simple terminal command, while the manual method enables you to do so via a zip file.

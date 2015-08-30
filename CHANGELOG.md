@@ -4,7 +4,7 @@
 1. [](#improved) 
     * Added blueprints for Grav Admin plugin
 2. [](#new) 
-    * Now it works with modular pages.
+    * Now it works with modular pages. Now it depends on PHP 5.5 or +.
 
 # v1.0.5
 ## 08/07/2015
