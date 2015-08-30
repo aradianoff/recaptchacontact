@@ -1,6 +1,6 @@
 # Grav reCAPTCHA Contact Plugin
 
-[![Release](https://img.shields.io/github/release/aradianoff/recaptchacontact.svg)](https://github.com/aradianoff/recaptchacontact/releases) [![Issues](https://img.shields.io/github/issues/aradianoff/recaptchacontact.svg)](https://github.com/aradianoff/recaptchacontact/issues) [![Dual license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE "License")
+[![Release](https://img.shields.io/github/release/aradianoff/recaptchacontact.svg)](https://github.com/aradianoff/recaptchacontact/releases) [![Issues](https://img.shields.io/github/issues/aradianoff/recaptchacontact.svg)](https://github.com/aradianoff/recaptchacontact/issues) [![Dual license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE "License")[![PayPal](https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif)][paypal]
 
 `reCAPTCHA Contact` is a [Grav](http://github.com/getgrav/grav) v0.9.33+ plugin based in the [Simple Contact](https://github.com/nunopress/grav-plugin-simple_contact) plugin from NunoPress LLC that adds a contact form in Grav pages with [Google reCAPTCHA](https://www.google.com/recaptcha/) validation to filter Spam Robots and multilang support. Currently Italian (it), Spanish (es), German (de) and English (en) translations are included by default in the `languages.yaml`.
 
@@ -149,3 +149,6 @@ Manually updating this plugin is pretty simple. Here is what you will need to do
 - @nunopress: For the [Simple Contact](https://github.com/nunopress/grav-plugin-simple_contact) plugins in which this one is based.
 - @iusvar: For the Italian translation.
 - @Sommerregen: For the German translation.
+
+[paypal]: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=QQP5DLH48X4VC&lc=ES&item_name=aRadianOff&item_number=reCatpchaContactPlugin&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted "Donate for my GitHub project using PayPal"
+
