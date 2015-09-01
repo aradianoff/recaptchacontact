@@ -1,6 +1,6 @@
 <?php 
 /**
- * reCAPTCHA Contact v1.0.6
+ * reCAPTCHA Contact v1.0.7
  *
  * This plugin adds contact form features for sending email with 
  * google reCAPTCHA 2.0  validation.
@@ -8,7 +8,7 @@
  * Licensed under the MIT license, see LICENSE.
  *
  * @package     recaptchacontact
- * @version     1.0.6
+ * @version     1.0.7
  * @link        <https://github.com/aradianoff/recaptchacontact>
  * @author      aRadianOff - Inés Naya <inesnaya@aradianoff.com>
  * @copyright   2015, Inés Naya - aRadianOff
@@ -58,7 +58,7 @@ class   ReCaptchaContactPlugin extends Plugin
     public function onPageInitialized()
     {    
         /* Include Modular pages */
-        if ( !empty($this->grav['page'] ->collection())){
+        if ($this->grav['page'] ->collection()!=[]){
             $collection = $this->grav['page']->collection();
             // Loop over collection of modular pages 
                 foreach ($collection as $page) {

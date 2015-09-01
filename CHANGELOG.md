@@ -1,3 +1,12 @@
+# v1.0.7
+## 09/01/2015
+
+1. [](#improved) 
+    * Allow compatibility with PHP 5.4.
+2. [](#bugfix) 
+    * Fixed date in CHANGELOG.md.
+
+
 # v1.0.6
 ## 08/30/2015
 
