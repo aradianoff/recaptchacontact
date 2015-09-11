@@ -85,7 +85,7 @@ class   ReCaptchaContactPlugin extends Plugin
             $twig   = $this->grav['twig'];
             $uri    = $this->grav['uri'];
 
-            if (empty($uri->param('send'))) {
+            if (false === $uri->param('send')) {
             
                 if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     if (false === $this->validateFormData()) {
