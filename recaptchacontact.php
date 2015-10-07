@@ -50,7 +50,8 @@ class   ReCaptchaContactPlugin extends Plugin
 
     public function onTwigSiteVariables() // Esto se procesa después de onPageInitialized
     {
-        if ($this->grav['config']->get('plugins.recaptchacontact.enabled')) {
+        if ($this->grav['config']->get('plugins.recaptchacontact.enabled')
+            && !$this->grav['config']->get('plugins.recaptchacontact.disable_css')) {
             $this->grav['assets']->addCss('plugin://recaptchacontact/assets/css/style.css');
         }
     }
