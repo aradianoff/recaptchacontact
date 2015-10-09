@@ -126,7 +126,7 @@ Just use the same structure as in the `languages.yaml`file but use lowercase let
 
 #### Overriding:
 
-If you want to position the form in your template files manually, set `inject_template` to `false` (see above), and add the following to any templates that you want it to display in:
+If you want to position the form in your template files manually, set `inject_template` to `false` [(see above)](#options-in-recaptchacontactyaml), and add the following to any templates that you want it to display in:
 
     {% include 'partials/recaptchaform.html.twig' with {'page': page, 'recaptchacontact': recaptchacontact} %}
     
