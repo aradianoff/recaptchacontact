@@ -124,6 +124,8 @@ But if you want to overwrite any of the configuration variables (including those
 
 Just use the same structure as in the `languages.yaml`file but use lowercase letters instead of uppercase.
 
+#### Overriding:
+
 If you want to position the form in your template files manually, set `inject_template` to `false` (see above), and add the following to any templates that you want it to display in:
 
     {% include 'partials/recaptchaform.html.twig' with {'page': page, 'recaptchacontact': recaptchacontact} %}
