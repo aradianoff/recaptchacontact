@@ -85,15 +85,15 @@ class ReCaptchaContactPlugin extends Plugin
     {
         /** @var $twig \Grav\Common\Twig\Twig */
         $twig = $this->grav['twig'];
-        $old_content = $page->content();
-        $template = 'partials/recaptchaform.html.twig';
+        $original_content = $page->content();
+        $template = 'partials/recaptcha_container.html.twig';
 
         $data = [
             'recaptchacontact' => $this->grav['config']->get('plugins.recaptchacontact'),
             'page' => $page
         ];
 
-        $page->content($old_content . $twig->processTemplate($template, $data));
+        $page->content($original_content . $twig->processTemplate($template, $data));
     }
 
     protected function setupRecaptchaContact(Page $page, $collection = false)
