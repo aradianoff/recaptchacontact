@@ -93,7 +93,12 @@ class ReCaptchaContactPlugin extends Plugin
             'page' => $page
         ];
 
-        $page->content($original_content . $twig->processTemplate($template, $data));
+        $data['recaptchacontact']['message'] = $this->submissionMessage;
+
+        // The surrounding div tags are SOLELY a workaround for a
+        // Parsedown bug that throws away anything after the page content
+        // which, in this case is the entire form, if it is not surrounded.
+        $page->content('<div>' . $original_content . $twig->processTemplate($template, $data) . '</div>');
     }
 
     protected function setupRecaptchaContact(Page $page, $collection = false)
@@ -105,26 +110,28 @@ class ReCaptchaContactPlugin extends Plugin
             $uri = $this->grav['uri'];
 
             if ($uri->param('send') === false) {
-                if ($_SERVER['REQUEST_METHOD'] == "POST") {
-                    $this->processFormAction($uri);
-                } elseif ($options['inject_template'] === true && !$collection) {
-                    $this->injectTemplate($this->grav['page']);
-                }
+                $this->processFormAction($uri);
             } else {
                 $this->getMessageFromUrl($uri);
+            }
+
+            if ($options['inject_template'] === true && !$collection) {
+                $this->injectTemplate($this->grav['page']);
             }
         }
     }
 
     protected function processFormAction(Uri $uri)
     {
-        if (false === $this->validateFormData()) {
-            $this->grav->redirect($uri->url . '/send:error');
-        } else {
-            if (false === $this->sendEmail()) {
-                $this->grav->redirect($uri->url . '/send:fail');
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            if (false === $this->validateFormData()) {
+                $this->grav->redirect($uri->url . '/send:error');
             } else {
-                $this->grav->redirect($uri->url . '/send:success');
+                if (false === $this->sendEmail()) {
+                    $this->grav->redirect($uri->url . '/send:fail');
+                } else {
+                    $this->grav->redirect($uri->url . '/send:success');
+                }
             }
         }
     }

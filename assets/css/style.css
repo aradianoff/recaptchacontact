@@ -1,12 +1,35 @@
-.antispam-div { display: none; }
+.antispam-div {
+    display: none;
+}
 
-#contact.container {
+.recaptcha-contact {
     width: 50%;
     margin: 0;
 }
 
-#contact .button {
+.recaptcha-contact .button {
     float: right;
     margin: 5px;
+}
+
+.recaptcha-contact .alert {
+    border: 1px solid #ccc;
+    background-color: #fafafa;
+    padding: 10px;
+}
+
+.recaptcha-contact .alert.success {
+    border-color: #558042;
+    background-color: #F4FBF1;
+}
+
+.recaptcha-contact .alert.error,
+.recaptcha-contact .alert.fail {
+    border-color: #B67272;
+    background-color: #FBF1F1;
+}
+
+.recaptcha-contact .alert p {
+    margin: 0;
 }
 
