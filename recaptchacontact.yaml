@@ -1,5 +1,6 @@
 enabled: true
 default_lang: en
 disable_css: true
+inject_template: true # will only impact simple pages
 grecaptcha_sitekey: "your reCAPTCHA site key" # override in your /user/config/plugins/recaptchacontact.yaml
 grecaptcha_secret: "your secret-g-recaptcha-key" # override in your /user/config/plugins/recaptchacontact.yaml and keep it in a non-public repository
