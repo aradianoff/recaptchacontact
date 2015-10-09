@@ -23,7 +23,7 @@ use Grav\Common\Uri;
 
 class ReCaptchaContactPlugin extends Plugin
 {
-    protected $submissionMessage = [];
+    protected $submissionMessage = array();
 
     public static function getSubscribedEvents()
     {
@@ -67,7 +67,7 @@ class ReCaptchaContactPlugin extends Plugin
 
     public function onPageInitialized()
     {    
-        if ($this->grav['page']->collection() != []){
+        if (!empty($this->grav['page']->collection())){
             $collection = $this->grav['page']->collection();
 
             /** @var $page Page */
