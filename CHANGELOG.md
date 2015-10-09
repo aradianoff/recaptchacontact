@@ -1,3 +1,9 @@
+# v1.0.9
+## 10/09/2015
+
+1. [](#improved)
+    * Added the ability to customize almost everything in the plugin very easily.
+
 # v1.0.8
 ## 10/05/2015
 

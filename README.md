@@ -37,6 +37,8 @@ The plugin comes with some sensible default configuration that you can see in th
 ```
 enabled: (true|false)               // Enables or Disables the entire plugin for all pages.
 default_lang: en                    // default_lang in case there is no multilang support in the installation
+disable_css: (false|true)           // Enables or Disables the small stylesheet that provides default styles for the form and messages
+inject_template: (true|false)       // If false, you will need to include the `recaptchaform.html.twig` in your templates
 
 grecaptcha_sitekey: "your reCAPTCHA site key" // override in your /user/config/plugins/recaptchacontact.yaml
 grecaptcha_secret: "secret-g-recaptcha-key" // override in your /user/config/plugins/recaptchacontact.yaml and remember not to keep it in a public repository
@@ -122,6 +124,11 @@ But if you want to overwrite any of the configuration variables (including those
 
 Just use the same structure as in the `languages.yaml`file but use lowercase letters instead of uppercase.
 
+If you want to position the form in your template files manually, set `inject_template` to `false` (see above), and add the following to any templates that you want it to display in:
+
+    {% include 'partials/recaptchaform.html.twig' with {'page': page, 'recaptchacontact': recaptchacontact} %}
+    
+You can also easily override `partials/recaptcha_container.html.twig` to adjust the layout of the HTML surrounding the form. 
 
 ## Updating
 
