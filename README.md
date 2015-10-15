@@ -4,7 +4,7 @@
 
 `reCAPTCHA Contact` is a [Grav](http://github.com/getgrav/grav) v0.9.33+ plugin based in the [Simple Contact](https://github.com/nunopress/grav-plugin-simple_contact) plugin from NunoPress LLC that adds a contact form in Grav pages with [Google reCAPTCHA](https://www.google.com/recaptcha/) validation to filter Spam Robots and multilang support. Currently Italian (it), Spanish (es), German (de) and English (en) translations are included by default in the `languages.yaml`.
 
-**Version 1.0.6 [this line in recapthcha.php](https://github.com/aradianoff/recaptchacontact/blob/master/recaptchacontact.php#L61) causes the plugin to depend on php 5.5. Previous versions of PHP will cause the plugin to break. If you have a previous PHP version just substitute the `!empty($this->grav['page'] ->collection())` in [line 61](https://github.com/aradianoff/recaptchacontact/blob/master/recaptchacontact.php#L61) for `$this->grav['page'] ->collection()!=[]` or update the plugin. Version 1.0.7 of this plugin already includes this change to allow compatibility with the previous PHP versions.** 
+**Version 1.0.6 [this line in recapthcha.php](https://github.com/aradianoff/recaptchacontact/blob/master/recaptchacontact.php#L61) causes the plugin to depend on php 5.5. Previous versions of PHP will cause the plugin to break. If you have a previous PHP version just substitute the `!empty($this->grav['page'] ->collection())` in [line 61](https://github.com/aradianoff/recaptchacontact/blob/master/recaptchacontact.php#L61) for `$this->grav['page'] ->collection()!=[]` or update the plugin. Version 1.0.8 of this plugin already includes this change to allow compatibility with the previous PHP versions.** 
 
 ## Installation
 
@@ -151,6 +151,7 @@ Manually updating this plugin is pretty simple. Here is what you will need to do
 - @nunopress: For the [Simple Contact](https://github.com/nunopress/grav-plugin-simple_contact) plugins in which this one is based.
 - @iusvar: For the Italian translation.
 - @Sommerregen: For the German translation.
+- @bassplayer7: Added option to disable plugin-specific CSS.
 
 [paypal]: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=QQP5DLH48X4VC&lc=ES&item_name=aRadianOff&item_number=reCatpchaContactPlugin&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted "Donate for my GitHub project using PayPal"
 [release]: https://github.com/aradianoff/recaptchacontact/releases
