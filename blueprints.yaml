@@ -44,6 +44,17 @@ form:
           0: False
       validate:
            type: bool
+                   
+    inject_template:
+      type: toggle
+      label: Inject Contact Template Automatically
+      highlight: 1
+      default: 1
+      options:
+          1: True
+          0: False
+      validate:
+           type: bool
 
     grecaptcha_sitekey:
       type: text
