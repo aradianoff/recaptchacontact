@@ -26,7 +26,7 @@ You should now have all the plugin files under
 
     /your/site/grav/user/plugins/recaptchacontact
 
->> NOTE: This plugin is a modular component for Grav which requires [Grav](http://github.com/getgrav/grav), the [Error](https://github.com/getgrav/grav-plugin-error) and [Problems](https://github.com/getgrav/grav-plugin-problems) plugins, and a theme to be installed in order to operate. It also requires having at least an outgoing mailserver on your server side (to send the emails) and a [reCAPTCHA API key](www.google.com/recaptcha/) for your site.
+> NOTE: This plugin is a modular component for Grav which requires [Grav](http://github.com/getgrav/grav), the [Error](https://github.com/getgrav/grav-plugin-error) and [Problems](https://github.com/getgrav/grav-plugin-problems) plugins, and a theme to be installed in order to operate. It also requires having at least an outgoing mailserver on your server side (to send the emails) and a [reCAPTCHA API key](www.google.com/recaptcha/) for your site.
 
 ## Configuration
 
@@ -37,6 +37,8 @@ The plugin comes with some sensible default configuration that you can see in th
 ```
 enabled: (true|false)               // Enables or Disables the entire plugin for all pages.
 default_lang: en                    // default_lang in case there is no multilang support in the installation
+disable_css: (false|true)           // Enables or Disables the small stylesheet that provides default styles for the form and messages
+inject_template: (true|false)       // If false, you will need to include the `recaptchaform.html.twig` in your templates
 
 grecaptcha_sitekey: "your reCAPTCHA site key" // override in your /user/config/plugins/recaptchacontact.yaml
 grecaptcha_secret: "secret-g-recaptcha-key" // override in your /user/config/plugins/recaptchacontact.yaml and remember not to keep it in a public repository
@@ -122,6 +124,13 @@ But if you want to overwrite any of the configuration variables (including those
 
 Just use the same structure as in the `languages.yaml`file but use lowercase letters instead of uppercase.
 
+#### Overriding:
+
+If you want to position the form in your template files manually, set `inject_template` to `false` [(see above)](#options-in-recaptchacontactyaml), and add the following to any templates that you want it to display in:
+
+    {% include 'partials/recaptchaform.html.twig' with {'page': page, 'recaptchacontact': recaptchacontact} %}
+    
+You can also easily override `partials/recaptcha_container.html.twig` to adjust the layout of the HTML surrounding the form. 
 
 ## Updating
 
@@ -151,7 +160,7 @@ Manually updating this plugin is pretty simple. Here is what you will need to do
 - @nunopress: For the [Simple Contact](https://github.com/nunopress/grav-plugin-simple_contact) plugins in which this one is based.
 - @iusvar: For the Italian translation.
 - @Sommerregen: For the German translation.
-- @bassplayer7: Added option to disable plugin-specific CSS.
+- @bassplayer7: Added the ability to customize almost everything in the plugin very easily.
 
 [paypal]: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=QQP5DLH48X4VC&lc=ES&item_name=aRadianOff&item_number=reCatpchaContactPlugin&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted "Donate for my GitHub project using PayPal"
 [release]: https://github.com/aradianoff/recaptchacontact/releases

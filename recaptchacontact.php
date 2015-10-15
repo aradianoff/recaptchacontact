@@ -19,9 +19,12 @@ namespace Grav\Plugin;
 
 use Grav\Common\Page\Page;
 use Grav\Common\Plugin;
+use Grav\Common\Uri;
 
-class   ReCaptchaContactPlugin extends Plugin
+class ReCaptchaContactPlugin extends Plugin
 {
+    protected $submissionMessage = array();
+
     public static function getSubscribedEvents()
     {
         return [
@@ -50,85 +53,115 @@ class   ReCaptchaContactPlugin extends Plugin
 
     public function onTwigSiteVariables() // Esto se procesa después de onPageInitialized
     {
-        if ($this->grav['config']->get('plugins.recaptchacontact.enabled')
-            && !$this->grav['config']->get('plugins.recaptchacontact.disable_css')) {
-            $this->grav['assets']->addCss('plugin://recaptchacontact/assets/css/style.css');
+        $config = $this->grav['config'];
+
+        if ($config->get('plugins.recaptchacontact.enabled')) {
+            if (!$config->get('plugins.recaptchacontact.disable_css')) {
+                $this->grav['assets']->addCss('plugin://recaptchacontact/assets/css/style.css');
+            }
+
+            $this->grav['twig']->twig_vars['recaptchacontact'] = $this->grav['config']->get('plugins.recaptchacontact');
+            $this->grav['twig']->twig_vars['recaptchacontact']['message'] = $this->submissionMessage;
         }
     }
-    
+
     public function onPageInitialized()
     {    
-        /* Include Modular pages */
-        if ($this->grav['page'] ->collection()!=[]){
+        if (!empty($this->grav['page']->collection())){
             $collection = $this->grav['page']->collection();
-            // Loop over collection of modular pages 
-                foreach ($collection as $page) {
-                    if(isset($page->header()->recaptchacontact)){
-                        $this-> addContactToPage($page);
-                    }
+
+            /** @var $page Page */
+            foreach ($collection as $page) {
+                if (isset($page->header()->recaptchacontact)){
+                    $this->setupRecaptchaContact($page, true);
                 }
+            }
         } else {
-            $this-> addContactToPage($this->grav['page']);
-        }     
+            $this->setupRecaptchaContact($this->grav['page']);
+        }
     }
 
-    protected function addContactToPage (Page $page)
+    protected function injectTemplate(Page $page)
+    {
+        /** @var $twig \Grav\Common\Twig\Twig */
+        $twig = $this->grav['twig'];
+        $original_content = $page->content();
+        $template = 'partials/recaptcha_container.html.twig';
+
+        $data = [
+            'recaptchacontact' => $this->grav['config']->get('plugins.recaptchacontact'),
+            'page' => $page
+        ];
+
+        $data['recaptchacontact']['message'] = $this->submissionMessage;
+
+        // The surrounding div tags are SOLELY a workaround for a
+        // Parsedown bug that throws away anything after the page content
+        // which, in this case is the entire form, if it is not surrounded.
+        $page->content('<div>' . $original_content . $twig->processTemplate($template, $data) . '</div>');
+    }
+
+    protected function setupRecaptchaContact(Page $page, $collection = false)
     {
         $this->mergePluginConfig($page); 
-        $config = $this->grav['config'];
-        $options = $config->get('plugins.recaptchacontact');
+        $options = $this->grav['config']->get('plugins.recaptchacontact');
         
+        if ($options['enabled']) {
+            $uri = $this->grav['uri'];
+
+            if ($uri->param('send') === false) {
+                $this->processFormAction($uri);
+            } else {
+                $this->getMessageFromUrl($uri);
+            }
+
+            if ($options['inject_template'] === true && !$collection) {
+                $this->injectTemplate($this->grav['page']);
+            }
+        }
+    }
+
+    protected function processFormAction(Uri $uri)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            if (false === $this->validateFormData()) {
+                $this->grav->redirect($uri->url . '/send:error');
+            } else {
+                if (false === $this->sendEmail()) {
+                    $this->grav->redirect($uri->url . '/send:fail');
+                } else {
+                    $this->grav->redirect($uri->url . '/send:success');
+                }
+            }
+        }
+    }
+
+    protected function setSubmissionMessage($type, $text)
+    {
+        $this->submissionMessage = [
+            'type' => $type,
+            'text' => $text
+        ];
+    }
+
+    protected function getMessageFromUrl(Uri $uri)
+    {
         $message_success = $this->overwriteConfigVariable('plugins.recaptchacontact.messages.success', 'RECAPTCHACONTACT.MESSAGES.SUCCESS');
         $message_error = $this->overwriteConfigVariable('plugins.recaptchacontact.messages.error', 'RECAPTCHACONTACT.MESSAGES.ERROR');
         $message_fail = $this->overwriteConfigVariable('plugins.recaptchacontact.messages.fail', 'RECAPTCHACONTACT.MESSAGES.FAIL');
 
-        if ($options['enabled']) {
-            $twig   = $this->grav['twig'];
-            $uri    = $this->grav['uri'];
+        switch ($uri->param('send')) {
+            case 'success':
+                $this->setSubmissionMessage('success', $message_success);
+                break;
 
-            if (false === $uri->param('send')) {
-            
-                if ($_SERVER['REQUEST_METHOD'] == "POST") {
-                    if (false === $this->validateFormData()) {
-                        $this->grav->redirect($uri->url . '/send:error');
-                    } else {
-                        if (false === $this->sendEmail()) {
-                            $this->grav->redirect($uri->url . '/send:fail');
-                        } else {
-                            $this->grav->redirect($uri->url . '/send:success');
-                        }
-                    }
-                } else {
-                    
-                    $old_content = $page->content();
+            case 'error':
+                $this->setSubmissionMessage('error', $message_error);
+                break;
 
-                    $template = 'partials/recaptchaform.html.twig';
-                    $data = [
-                      'recaptchacontact' => $options,
-                      'page' => $page
-                    ];
-
-                    $page->content($old_content .$twig->processTemplate($template, $data));
-                }
-            } else {
-              
-                switch ($uri->param('send')) {
-                    case 'success':
-                        $page->content($message_success);
-                    break;
-
-                    case 'error':
-                        $page->content($message_error);
-                    break;
-
-                    case 'fail':
-                        $page->content($message_fail);
-                    break;
-
-                    default:
-                    break;
-                }
-            }
+            case 'fail':
+                $this->setSubmissionMessage('fail', $message_fail);
+                break;
         }
     }
 
@@ -144,10 +177,10 @@ class   ReCaptchaContactPlugin extends Plugin
         
         $grecaptcha = $form_data['g-recaptcha-response'];
         $secretkey = $this->grav['config']->get('plugins.recaptchacontact.grecaptcha_secret');
+
         if (!empty($grecaptcha)) {
            $response=json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretkey."&response=".$grecaptcha), true);
         }
-
 
         return (empty($name) or empty($message) or empty($email) or $antispam or empty($grecaptcha) or $response['success']==false) ? false : true;
     }
@@ -176,8 +209,7 @@ class   ReCaptchaContactPlugin extends Plugin
     protected function sendEmail()
     {
         $form   = $this->filterFormData($_POST);
-        $options = $this->grav['config']->get('plugins.recaptchacontact');
-        
+
         $recipient  = $this->overwriteConfigVariable('plugins.recaptchacontact.recipient','RECAPTCHACONTACT.RECIPIENT'); 
         $subject    = $this->overwriteConfigVariable('plugins.recaptchacontact.subject','RECAPTCHACONTACT.SUBJECT'); 
         $email_content = "Name: {$form['name']}\n";
@@ -189,7 +221,7 @@ class   ReCaptchaContactPlugin extends Plugin
         return (mail($recipient, $subject, $email_content, $email_headers)) ? true : false;
     }
 
-    private function mergePluginConfig( Page $page )
+    private function mergePluginConfig(Page $page)
     {      
         $defaults = (array) $this->grav['config']->get('plugins.recaptchacontact');
 
