@@ -1,8 +1,8 @@
 # v1.0.8
-## 10/05/2015
+## 10/09/2015
 
 1. [](#improved)
-    * Added ability to easily disable CSS
+    * Added the ability to customize almost everything in the plugin very easily.
 
 # v1.0.7
 ## 09/01/2015
