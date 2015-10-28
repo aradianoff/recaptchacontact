@@ -281,7 +281,7 @@ class ReCaptchaContactPlugin extends Plugin
     private function overwriteConfigVariable($pageconfigvar, $langconfigvar)
     {
         $language = $this->grav['language']; 
-        return $this->grav['config']->get($pageconfigvar) ?: $language->translate([$langconfigvar], null, false);
+        return $this->grav['config']->get($pageconfigvar) ?: $language->translate([$langconfigvar]);
     }
     
 }
