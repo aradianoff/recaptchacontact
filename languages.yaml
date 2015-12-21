@@ -1,34 +1,3 @@
-de:
-  RECAPTCHACONTACT:
-    FORM_LEGEND: "Kontaktiere mich"
-    SUBJECT: "[Grav] Kontaktanfrage"
-    RECIPIENT: "name@provider.de"
-
-    FIELDS:
-      NAME:
-        LABEL: "Name"
-        PLACEHOLDER: "Dein Name"
-
-      EMAIL:
-        LABEL: "E-Mail"
-        PLACEHOLDER: "Deine E-Mail"
-
-      MESSAGE:
-        LABEL: "Nachricht"
-        PLACEHOLDER: "Deine Nachricht"
-
-      ANTISPAM:
-        LABEL: "Antispam"
-        PLACEHOLDER: "Dieses Feld für Antispam-Bots frei lassen."
-
-      SUBMIT:
-        LABEL: "Abschicken"
-
-    MESSAGES:
-      SUCCESS: "Vielen Dank! Deine Nachricht wurde erfolgreich versendet."
-      ERROR: "Oops! Mit der Übertragung gab es ein Problem. Bitte versuche es erneut."
-      FAIL: "Oops! Versenden der Nachricht fehlgeschlagen."
-
 en:
   RECAPTCHACONTACT:
     FORM_LEGEND: "Contact me"
@@ -59,6 +28,38 @@ en:
       SUCCESS: "Thank You! Your message has been sent."
       ERROR: "Oops! There was a problem with your submission. Please complete the form and try again."
       FAIL: "Oops! Something went wrong and we couldn't send your message."
+
+
+de:
+  RECAPTCHACONTACT:
+    FORM_LEGEND: "Kontaktiere mich"
+    SUBJECT: "[Grav] Kontaktanfrage"
+    RECIPIENT: "name@provider.de"
+
+    FIELDS:
+      NAME:
+        LABEL: "Name"
+        PLACEHOLDER: "Dein Name"
+
+      EMAIL:
+        LABEL: "E-Mail"
+        PLACEHOLDER: "Deine E-Mail"
+
+      MESSAGE:
+        LABEL: "Nachricht"
+        PLACEHOLDER: "Deine Nachricht"
+
+      ANTISPAM:
+        LABEL: "Antispam"
+        PLACEHOLDER: "Dieses Feld für Antispam-Bots frei lassen."
+
+      SUBMIT:
+        LABEL: "Abschicken"
+
+    MESSAGES:
+      SUCCESS: "Vielen Dank! Deine Nachricht wurde erfolgreich versendet."
+      ERROR: "Oops! Mit der Übertragung gab es ein Problem. Bitte versuche es erneut."
+      FAIL: "Oops! Versenden der Nachricht fehlgeschlagen."
 
 es:
   RECAPTCHACONTACT:
@@ -122,3 +123,33 @@ it:
       ERROR: "Oh! C'è stato un problema durante l'invio. Si prega di compilare il modulo e riprovare."
       FAIL: "Oh! Qualcosa non ha funzionato perciò il tuo messaggio non potrà essere inviato."
 
+ru:
+  RECAPTCHACONTACT:
+    FORM_LEGEND: "Контакты"
+    SUBJECT: "Новый контакт от Grav!"
+    RECIPIENT: "hello@example.com"
+
+    FIELDS:
+      NAME:
+        LABEL: "Имя"
+        PLACEHOLDER: "Укажите имя"
+
+      EMAIL:
+        LABEL: "Email"
+        PLACEHOLDER: "Укажите email"
+
+      MESSAGE:
+        LABEL: "Сообщение"
+        PLACEHOLDER: "Укажите сообщение"
+
+      ANTISPAM:
+        LABEL: "Антиспам"
+        PLACEHOLDER: "Пожалуйста, оставьте данное поле пустым для Антиспама"
+
+      SUBMIT:
+        LABEL: "Отправить"
+
+    MESSAGES:
+      SUCCESS: "Спасибо! Ваше сообщение было отправлено."
+      ERROR: "Упс! Произошла ошибка при отправке вашего сообщения. Пожалуйста заполните форму и попробуйте снова."
+      FAIL: "Упс! Что-то пошло не так и мы не можем отправить ваше сообщение."
