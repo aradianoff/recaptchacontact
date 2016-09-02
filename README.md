@@ -132,6 +132,14 @@ If you want to position the form in your template files manually, set `inject_te
     
 You can also easily override `partials/recaptcha_container.html.twig` to adjust the layout of the HTML surrounding the form. 
 
+## Customizing CSS
+
+To override the default styling, do the following:
+
+  - Set `disable_css` to `true`. (This doesn't disable *all* CSS. It simply tells the program not to use the built-in CSS that comes with the plugin.)
+  - Copy `recaptchacontact.css` from the plugin's `assets` folder into your theme's `assets` folder.
+  - Edit as you see fit.
+
 ## Updating
 
 As development for this plugin continues, new versions may become available that add additional features and functionality, improve compatibility with newer Grav releases, and generally provide a better user experience. Updating this plugin is easy, and can be done through Grav's GPM system, as well as manually.

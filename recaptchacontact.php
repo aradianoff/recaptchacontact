@@ -57,7 +57,9 @@ class ReCaptchaContactPlugin extends Plugin
 
         if ($config->get('plugins.recaptchacontact.enabled')) {
             if (!$config->get('plugins.recaptchacontact.disable_css')) {
-                $this->grav['assets']->addCss('plugin://recaptchacontact/assets/css/style.css');
+                $this->grav['assets']->addCss('plugin://recaptchacontact/assets/recaptchacontact.css');
+            } else {
+                $this->grav['assets']->addCss('theme://assets/recaptchacontact.css');
             }
 
             $this->grav['twig']->twig_vars['recaptchacontact'] = $this->grav['config']->get('plugins.recaptchacontact');
