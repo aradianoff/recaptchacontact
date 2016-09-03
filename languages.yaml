@@ -90,6 +90,37 @@ es:
       SUCCESS: "¡Gracias! Tu mensaje ha sido enviado."
       ERROR: "¡Uy! Hubo un problema con el envío. Por favor, rellena el formulario de nuevo."
       FAIL: "¡Uy! Algo salió mal y no se pudo enviar el mensaje."
+      
+fr:
+  RECAPTCHACONTACT:
+    FORM_LEGEND: "Me contacter"
+    SUBJECT: "Nouveau contact du site de Grav !"
+    RECIPIENT: "hello@exemple.com"
+
+    FIELDS:
+      NAME:
+        LABEL: "Nom"
+        PLACEHOLDER: "Ajoutez votre nom"
+
+      EMAIL:
+        LABEL: "E-mail"
+        PLACEHOLDER: "Ajoutez votre e-mail"
+
+      MESSAGE:
+        LABEL: "Message"
+        PLACEHOLDER: "Ajoutez votre message"
+
+      ANTISPAM:
+        LABEL: "Antispam"
+        PLACEHOLDER: "Veuillez laisser ce champ vide pour l'antispam"
+
+      SUBMIT:
+        LABEL: "Envoyer"
+
+    MESSAGES:
+      SUCCESS: "Merci ! Votre message a bien été envoyé."
+      ERROR: "Oups ! Une erreur s'est produite lors de l'envoi. Veuillez renseigner à nouveau le formulaire et réessayer."
+      FAIL: "Oups ! Une erreur s'est produite et il a été impossible d'envoyer votre message."
 
 it:
   RECAPTCHACONTACT:
@@ -121,4 +152,3 @@ it:
       SUCCESS: "Grazie! Il tuo messaggio è stato inviato."
       ERROR: "Oh! C'è stato un problema durante l'invio. Si prega di compilare il modulo e riprovare."
       FAIL: "Oh! Qualcosa non ha funzionato perciò il tuo messaggio non potrà essere inviato."
-
