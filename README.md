@@ -2,9 +2,7 @@
 
 [![Release](https://img.shields.io/github/release/aradianoff/recaptchacontact.svg)][release] [![Issues](https://img.shields.io/github/issues/aradianoff/recaptchacontact.svg)][issues] [![Dual license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE "License")[![PayPal](https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif)][paypal]
 
-`reCAPTCHA Contact` is a [Grav](http://github.com/getgrav/grav) v0.9.33+ plugin based in the [Simple Contact](https://github.com/nunopress/grav-plugin-simple_contact) plugin from NunoPress LLC that adds a contact form in Grav pages with [Google reCAPTCHA](https://www.google.com/recaptcha/) validation to filter Spam Robots and multilang support. Currently Italian (it), Spanish (es), German (de) and English (en) translations are included by default in the `languages.yaml`.
-
-**Version 1.0.6 [this line in recapthcha.php](https://github.com/aradianoff/recaptchacontact/blob/master/recaptchacontact.php#L61) causes the plugin to depend on php 5.5. Previous versions of PHP will cause the plugin to break. If you have a previous PHP version just substitute the `!empty($this->grav['page'] ->collection())` in [line 61](https://github.com/aradianoff/recaptchacontact/blob/master/recaptchacontact.php#L61) for `$this->grav['page'] ->collection()!=[]` or update the plugin. Version 1.0.8 of this plugin already includes this change to allow compatibility with the previous PHP versions.** 
+`reCAPTCHA Contact` is a [Grav](http://github.com/getgrav/grav) v0.9.33+ plugin that adds a contact form in Grav pages with [Google reCAPTCHA](https://www.google.com/recaptcha/) validation to filter Spam Robots and includes multilanguage support. Currently English (en), Italian (it), Spanish (es), German (de), and Russian (ru) translations are included by default in the `languages.yaml`.
 
 ## Installation
 
@@ -37,7 +35,7 @@ The plugin comes with some sensible default configuration that you can see in th
 ```
 enabled: (true|false)               // Enables or Disables the entire plugin for all pages.
 default_lang: en                    // default_lang in case there is no multilang support in the installation
-disable_css: (false|true)           // Enables or Disables the small stylesheet that provides default styles for the form and messages
+disable_css: (false|true)           // Enables or Disables the built-in default stylesheet 
 inject_template: (true|false)       // If false, you will need to include the `recaptchaform.html.twig` in your templates
 
 grecaptcha_sitekey: "your reCAPTCHA site key" // override in your /user/config/plugins/recaptchacontact.yaml
@@ -124,7 +122,7 @@ But if you want to overwrite any of the configuration variables (including those
 
 Just use the same structure as in the `languages.yaml`file but use lowercase letters instead of uppercase.
 
-#### Overriding:
+## Manual Positioning
 
 If you want to position the form in your template files manually, set `inject_template` to `false` [(see above)](#options-in-recaptchacontactyaml), and add the following to any templates that you want it to display in:
 
@@ -169,6 +167,8 @@ Manually updating this plugin is pretty simple. Here is what you will need to do
 - @iusvar: For the Italian translation.
 - @Sommerregen: For the German translation.
 - @bassplayer7: Added the ability to customize almost everything in the plugin very easily.
+- @ktaranov: For the Russian translation.
+- @Perlkonig: For making it easier to customize the CSS.
 
 [paypal]: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=QQP5DLH48X4VC&lc=ES&item_name=aRadianOff&item_number=reCatpchaContactPlugin&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted "Donate for my GitHub project using PayPal"
 [release]: https://github.com/aradianoff/recaptchacontact/releases
