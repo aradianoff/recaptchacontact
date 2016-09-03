@@ -6,7 +6,7 @@
 
 <div> {# Twig or Parsedown will render this template as raw HTML without this DIV. #}
     {% if not recaptchacontact.message %}
-        <form class="form-horizontal" action="{{ target_slug }}" method="post" id="recaptchacontact">
+        <form action="{{ target_slug }}" method="post" id="recaptchacontact">
             <fieldset>
                 <h3>
                     <legend class="legend">{{ recaptchacontact.form_legend ?:'RECAPTCHACONTACT.FORM_LEGEND'|t }}</legend>
