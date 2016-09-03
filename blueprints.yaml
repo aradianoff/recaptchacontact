@@ -1,5 +1,5 @@
 name: reCAPTCHA Contact
-version: 1.0.8
+version: 1.0.9
 description: "This plugin adds contact form features for sending email with google reCAPTCHA 2.0 validation."
 icon: paper-plane-o
 author:
