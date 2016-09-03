@@ -83,6 +83,11 @@ class ReCaptchaContactPlugin extends Plugin
         }
     }
 
+    /**
+     * Automatically add the contact form to the Page being loaded
+     *
+     * @param \Grav\Common\Page\Page $page
+     */
     protected function injectTemplate(Page $page)
     {
         /** @var $twig \Grav\Common\Twig\Twig */
@@ -103,6 +108,12 @@ class ReCaptchaContactPlugin extends Plugin
         $page->content('<div>' . $original_content . $twig->processTemplate($template, $data) . '</div>');
     }
 
+    /**
+     * Setup the Recaptcha Contact form
+     *
+     * @param \Grav\Common\Page\Page $page
+     * @param bool|false             $collection
+     */
     protected function setupRecaptchaContact(Page $page, $collection = false)
     {
         $this->mergePluginConfig($page); 
@@ -123,6 +134,11 @@ class ReCaptchaContactPlugin extends Plugin
         }
     }
 
+    /**
+     * Handle the Form Process
+     *
+     * @param \Grav\Common\Uri $uri
+     */
     protected function processFormAction(Uri $uri)
     {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -138,6 +154,10 @@ class ReCaptchaContactPlugin extends Plugin
         }
     }
 
+    /**
+     * @param $type: Type of message to be displayed
+     * @param $text: Text of message for user
+     */
     protected function setSubmissionMessage($type, $text)
     {
         $this->submissionMessage = [
@@ -146,6 +166,11 @@ class ReCaptchaContactPlugin extends Plugin
         ];
     }
 
+    /**
+     * Build a message depending on the URL that the form redirected to
+     *
+     * @param \Grav\Common\Uri $uri
+     */
     protected function getMessageFromUrl(Uri $uri)
     {
         $message_success = $this->overwriteConfigVariable('plugins.recaptchacontact.messages.success', 'RECAPTCHACONTACT.MESSAGES.SUCCESS');
@@ -167,6 +192,11 @@ class ReCaptchaContactPlugin extends Plugin
         }
     }
 
+    /**
+     * Make sure that the form is valid
+     *
+     * @return bool
+     */
     protected function validateFormData()
     {
         $form_data = $this->filterFormData($_POST);
@@ -187,6 +217,13 @@ class ReCaptchaContactPlugin extends Plugin
         return (empty($name) or empty($message) or empty($email) or $antispam or empty($grecaptcha) or $response['success']==false) ? false : true;
     }
 
+    /**
+     * Clean up and abstract form data
+     *
+     * @param $form
+     *
+     * @return array
+     */
     protected function filterFormData($form)
     {
         $defaults = [
@@ -208,6 +245,11 @@ class ReCaptchaContactPlugin extends Plugin
         ];
     }
 
+    /**
+     * Send the email
+     *
+     * @return bool: returns true if email was sent | return false if it failed to send
+     */
     protected function sendEmail()
     {
         $form   = $this->filterFormData($_POST);
@@ -241,7 +283,7 @@ class ReCaptchaContactPlugin extends Plugin
     private function overwriteConfigVariable($pageconfigvar, $langconfigvar)
     {
         $language = $this->grav['language']; 
-        return $this->grav['config']->get($pageconfigvar) ?: $language->translate([$langconfigvar], null, true);
+        return $this->grav['config']->get($pageconfigvar) ?: $language->translate([$langconfigvar]);
     }
     
 }
