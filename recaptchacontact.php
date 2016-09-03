@@ -127,12 +127,12 @@ class ReCaptchaContactPlugin extends Plugin
     {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if (false === $this->validateFormData()) {
-                $this->grav->redirect($uri->url . '/send:error');
+                $this->grav->redirectLangSafe($uri->url() . '/send:error');
             } else {
                 if (false === $this->sendEmail()) {
-                    $this->grav->redirect($uri->url . '/send:fail');
+                    $this->grav->redirectLangSafe($uri->url() . '/send:fail');
                 } else {
-                    $this->grav->redirect($uri->url . '/send:success');
+                    $this->grav->redirectLangSafe($uri->url() . '/send:success');
                 }
             }
         }
