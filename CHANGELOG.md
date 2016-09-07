@@ -1,3 +1,16 @@
+# v1.0.9
+## 09/03/2016
+
+1. [](#new)
+    * Added Russian translation.
+2. [](#improved) 
+    * Made it easier to customize the CSS.
+    * Updated the French translation.
+3. [](#bugfix) 
+    * Removed extraneous class that was causing layout issues in Bootstrap themes.
+    * Fixed some issues with redirects in multilingual installs (changed `redirect` to `redirectLangSafe`).
+    * Fixed a very rare issue with multiple `language.yaml` files loading.
+
 # v1.0.8
 ## 10/09/2015
 
