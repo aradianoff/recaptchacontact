@@ -40,8 +40,8 @@ form:
       highlight: 0
       default: 0
       options:
-          1: True
-          0: False
+          1: 'True'
+          0: 'False'
       validate:
            type: bool
                    
@@ -51,8 +51,8 @@ form:
       highlight: 1
       default: 1
       options:
-          1: True
-          0: False
+          1: 'True'
+          0: 'False'
       validate:
            type: bool
 

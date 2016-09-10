@@ -3,8 +3,14 @@
 }
 
 .recaptcha-contact {
-    width: 50%;
+    width: 100%;
     margin: 0;
+}
+
+@media (min-width: 860px) {
+    .recaptcha-contact {
+        width: 50%;
+    }
 }
 
 .recaptcha-contact .button {

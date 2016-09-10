@@ -1,0 +1,48 @@
+title: Contact Form
+description: 'These are page specific settings. Adjust site-wide changes on the [plugin page](http://grav.test/admin/plugins/recaptchacontact)'
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        contact:
+          type: tab
+          title: Contact Form
+
+          fields:
+            header.recaptchacontact.enabled:
+              type: select
+              size: short
+              classes: fancy
+              label: "Contact Form"
+              help: "If enabled, the form will display on this page"
+              options:
+                  false: "Disabled"
+                  true: "Enabled"
+
+#            header.recaptchacontact.enabled:
+#              type: toggle
+#              label: "Contact Form"
+#              highlight: 'true'
+#              help: PLUGIN_ADMIN.ENABLED_HELP
+#              options:
+#                'false': 'Disabled'
+#                'true': 'Enabled'
+#              validate:
+#                type: bool
+
+            header.recaptchacontact.recipient:
+              type: text
+              help: "Optional: if entered, an email will be sent to this address upon form submission"
+              label: "Send Emails To"
+
+            header.recaptchacontact.subject:
+              type: text
+              help: "Optional: if entered, the email subject will be this"
+              label: "Email Subject"
