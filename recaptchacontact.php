@@ -23,8 +23,6 @@ use Grav\Common\Uri;
 
 class ReCaptchaContactPlugin extends Plugin
 {
-    protected $submissionMessage = array();
-
     /**
      * Allows an optional override for the default CSS loading of whether or
      * not the plugin is enabled on the page or not.
@@ -81,7 +79,8 @@ class ReCaptchaContactPlugin extends Plugin
             }
 
             $this->grav['twig']->twig_vars['recaptchacontact'] = $this->grav['config']->get('plugins.recaptchacontact');
-            $this->grav['twig']->twig_vars['recaptchacontact']['message'] = $this->submissionMessage;
+            $this->grav['twig']->twig_vars['recaptchacontact']['message'] = $this->grav['session']->contact_message;
+            $this->grav['twig']->twig_vars['recaptchacontact']['session'] = $this->grav['session']->form;
         }
     }
 
@@ -118,7 +117,9 @@ class ReCaptchaContactPlugin extends Plugin
             'page' => $page
         ];
 
-        $data['recaptchacontact']['message'] = $this->submissionMessage;
+        $data['recaptchacontact']['message'] = $this->grav['session']->contact_message;
+        $data['recaptchacontact']['session'] = $this->grav['session']->form;
+
 
         // The surrounding div tags are SOLELY a workaround for a
         // Parsedown bug that throws away anything after the page content
@@ -130,7 +131,6 @@ class ReCaptchaContactPlugin extends Plugin
      * Setup the Recaptcha Contact form
      *
      * @param \Grav\Common\Page\Page $page
-     * @param bool|false             $collection
      */
     protected function setupRecaptchaContact(Page $page)
     {
@@ -140,11 +140,7 @@ class ReCaptchaContactPlugin extends Plugin
         if ($options['enabled']) {
             $uri = $this->grav['uri'];
 
-            if ($uri->param('send') === false) {
-                $this->processFormAction($uri);
-            } else {
-                $this->getMessageFromUrl($uri);
-            }
+            $this->processFormAction($uri);
 
             if ($options['inject_template'] === true) {
                 $this->injectTemplate($page);
@@ -159,17 +155,38 @@ class ReCaptchaContactPlugin extends Plugin
      */
     protected function processFormAction(Uri $uri)
     {
-        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        $message_success = $this->overwriteConfigVariable('plugins.recaptchacontact.messages.success', 'RECAPTCHACONTACT.MESSAGES.SUCCESS');
+        $message_error = $this->overwriteConfigVariable('plugins.recaptchacontact.messages.error', 'RECAPTCHACONTACT.MESSAGES.ERROR');
+        $message_fail = $this->overwriteConfigVariable('plugins.recaptchacontact.messages.fail', 'RECAPTCHACONTACT.MESSAGES.FAIL');
+
+        if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['g-recaptcha-response'])) {
+            $this->clearSession();
+
             if (false === $this->validateFormData()) {
-                $this->grav->redirectLangSafe($uri->url() . '/send:error');
+                $this->setSubmissionMessage('error', $message_error);
+                $this->setSessionFields();
             } else {
                 if (false === $this->sendEmail()) {
-                    $this->grav->redirectLangSafe($uri->url() . '/send:fail');
+                    $this->setSubmissionMessage('fail', $message_fail);
+                    $this->setSessionFields();
                 } else {
-                    $this->grav->redirectLangSafe($uri->url() . '/send:success');
+                    $this->setSubmissionMessage('success', $message_success);
                 }
             }
+
+            $this->grav->redirectLangSafe($uri->url());
         }
+    }
+
+    protected function setSessionFields()
+    {
+        $fields = [];
+
+        $fields['name'] = htmlspecialchars($_POST['name']);
+        $fields['email'] = htmlspecialchars($_POST['email']);
+        $fields['message'] = htmlspecialchars($_POST['message']);
+
+        $this->grav['session']->form = $fields;
     }
 
     /**
@@ -178,36 +195,16 @@ class ReCaptchaContactPlugin extends Plugin
      */
     protected function setSubmissionMessage($type, $text)
     {
-        $this->submissionMessage = [
+        $this->grav['session']->contact_message = [
             'type' => $type,
             'text' => $text
         ];
     }
 
-    /**
-     * Build a message depending on the URL that the form redirected to
-     *
-     * @param \Grav\Common\Uri $uri
-     */
-    protected function getMessageFromUrl(Uri $uri)
+    protected function clearSession()
     {
-        $message_success = $this->overwriteConfigVariable('plugins.recaptchacontact.messages.success', 'RECAPTCHACONTACT.MESSAGES.SUCCESS');
-        $message_error = $this->overwriteConfigVariable('plugins.recaptchacontact.messages.error', 'RECAPTCHACONTACT.MESSAGES.ERROR');
-        $message_fail = $this->overwriteConfigVariable('plugins.recaptchacontact.messages.fail', 'RECAPTCHACONTACT.MESSAGES.FAIL');
-
-        switch ($uri->param('send')) {
-            case 'success':
-                $this->setSubmissionMessage('success', $message_success);
-                break;
-
-            case 'error':
-                $this->setSubmissionMessage('error', $message_error);
-                break;
-
-            case 'fail':
-                $this->setSubmissionMessage('fail', $message_fail);
-                break;
-        }
+        $this->grav['session']->contact_message = null;
+        $this->grav['session']->form = null;
     }
 
     /**
@@ -272,7 +269,7 @@ class ReCaptchaContactPlugin extends Plugin
     {
         $form   = $this->filterFormData($_POST);
 
-        $recipient  = $this->overwriteConfigVariable('plugins.recaptchacontact.recipient','RECAPTCHACONTACT.RECIPIENT');
+        $recipient  = $this->getEmailRecipient();
         $subject    = $this->overwriteConfigVariable('plugins.recaptchacontact.subject','RECAPTCHACONTACT.SUBJECT');
         $email_content = "Name: {$form['name']}\n";
         $email_content .= "Email: {$form['email']}\n\n";
@@ -280,7 +277,26 @@ class ReCaptchaContactPlugin extends Plugin
 
         $email_headers = "From: {$form['name']} <{$form['email']}>";
 
-        return (mail($recipient, $subject, $email_content, $email_headers)) ? true : false;
+        if ($this->grav['config']->get('plugins.email.enabled')) {
+            $message = $this->grav['Email']->message($subject, $email_content, 'text/html')
+                ->setFrom($form['email'])
+                ->setTo($recipient);
+
+            return $this->grav['Email']->send($message);
+        } else {
+            return (mail($recipient, $subject, $email_content, $email_headers)) ? true : false;
+        }
+    }
+
+    protected function getEmailRecipient()
+    {
+        $recipient  = $this->overwriteConfigVariable('plugins.recaptchacontact.recipient','RECAPTCHACONTACT.RECIPIENT');
+
+        if ((!$recipient || $recipient === 'hello@example.com') && isset($this->grav['config']['site']['author']['email'])) {
+            $recipient = $this->grav['config']['site']['author']['email'];
+        }
+
+        return $recipient;
     }
 
     protected function mergePluginConfig(Page $page)
