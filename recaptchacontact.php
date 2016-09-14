@@ -57,9 +57,7 @@ class ReCaptchaContactPlugin extends Plugin
 
     public function onGetPageTemplates($event)
     {
-        $types = $event->types;
-        $locator = $this->grav['locator'];
-        $types->scanBlueprints('plugin://' . $this->name . '/blueprints');
+        $event->types->scanBlueprints('plugin://' . $this->name . '/blueprints');
     }
 
     public function onTwigTemplatePaths()
@@ -292,7 +290,8 @@ class ReCaptchaContactPlugin extends Plugin
     {
         $recipient  = $this->overwriteConfigVariable('plugins.recaptchacontact.recipient','RECAPTCHACONTACT.RECIPIENT');
 
-        if ((!$recipient || $recipient === 'hello@example.com') && isset($this->grav['config']['site']['author']['email'])) {
+        if ((!$recipient || $recipient === 'hello@example.com' || $recipient === 'name@provider.de') &&
+            isset($this->grav['config']['site']['author']['email'])) {
             $recipient = $this->grav['config']['site']['author']['email'];
         }
 

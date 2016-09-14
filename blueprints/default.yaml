@@ -13,36 +13,27 @@ form:
       fields:
         contact:
           type: tab
-          title: Contact Form
+          title: RECAPTCHACONTACT.ADMIN.HEADING
 
           fields:
             header.recaptchacontact.enabled:
               type: select
               size: short
               classes: fancy
-              label: "Contact Form"
-              help: "If enabled, the form will display on this page"
+              label: RECAPTCHACONTACT.ADMIN.HEADING
+              help: RECAPTCHACONTACT.ADMIN.TOGGLE.HELP
               options:
-                  false: "Disabled"
-                  true: "Enabled"
-
-#            header.recaptchacontact.enabled:
-#              type: toggle
-#              label: "Contact Form"
-#              highlight: 'true'
-#              help: PLUGIN_ADMIN.ENABLED_HELP
-#              options:
-#                'false': 'Disabled'
-#                'true': 'Enabled'
-#              validate:
-#                type: bool
+                false: PLUGIN_ADMIN.DISABLED
+                true: PLUGIN_ADMIN.ENABLED
+              validate:
+                type: bool
 
             header.recaptchacontact.recipient:
               type: text
-              help: "Optional: if entered, an email will be sent to this address upon form submission"
-              label: "Send Emails To"
+              label: RECAPTCHACONTACT.ADMIN.RECIPIENT.LABEL
+              help: RECAPTCHACONTACT.ADMIN.RECIPIENT.HELP
 
             header.recaptchacontact.subject:
               type: text
-              help: "Optional: if entered, the email subject will be this"
-              label: "Email Subject"
+              label: RECAPTCHACONTACT.ADMIN.SUBJECT.LABEL
+              help: RECAPTCHACONTACT.ADMIN.SUBJECT.HELP
