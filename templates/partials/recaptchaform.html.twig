@@ -22,12 +22,12 @@
                 <input id="name" name="name" type="text" placeholder="{{ recaptchacontact.fields.name.placeholder ?:'RECAPTCHACONTACT.FIELDS.NAME.PLACEHOLDER'|t }}" class="recaptcha-field form-control" value="{{ recaptchacontact.session.name }}"/>
             </div>
 
-            <div class="form-group">
+            <div class="recaptcha-form-group form-group">
                 <label class="recaptcha-label control-label" for="email">{{ recaptchacontact.fields.email.label ?:'RECAPTCHACONTACT.FIELDS.EMAIL.LABEL'|t }}</label>
                 <input id="email" name="email" type="text" placeholder="{{ recaptchacontact.fields.email.placeholder ?:'RECAPTCHACONTACT.FIELDS.EMAIL.PLACEHOLDER'|t }}" class="recaptcha-field form-control" value="{{ recaptchacontact.session.email }}"/>
              </div>
 
-            <div class="form-group">
+            <div class="recaptcha-form-group form-group">
                 <label class="recaptcha-label control-label" for="message">{{ recaptchacontact.fields.message.label ?:'RECAPTCHACONTACT.FIELDS.MESSAGE.LABEL'|t }}</label>
                 <textarea class="recaptcha-textarea form-control" id="message" name="message" placeholder="{{ recaptchacontact.fields.message.placeholder ?:'RECAPTCHACONTACT.FIELDS.MESSAGE.PLACEHOLDER'|t }}" rows="5">{{ recaptchacontact.session.message }}</textarea>
             </div>
