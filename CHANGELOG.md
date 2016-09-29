@@ -1,3 +1,22 @@
+# v2.0.0
+## 09/29/2016
+
+1. [](#new)
+    * The plugin can now be fully managed from the admin panel.
+    * Modular and simple pages can have the contact form simply by toggling the form on.
+    * Integrated with the Email plugin, if it is available.
+2. [](#improved) 
+    * Removed unnecessary jQuery dependency.
+    * Added ability to inject contact form into modular page (previously only would for simple).
+    * Refactored messages to be session based instead of redirecting which could cause problems with languages.
+    * Added better HTML classes to allow easier integration with the default template.
+    * Improved CSS.
+    * Made email recipient a little smarter with three levels of fallback. 
+3. [](#bugfix) 
+    * Fixed a bug that caused CSS to not load on modular pages.
+    * Fixed a problem which caused the form to shrink at 50% of the screen width to an uncomfortable width.
+
+
 # v1.0.9
 ## 09/03/2016
 
@@ -72,8 +91,3 @@
 
 1. [](#new)
     * Change log started.
-
-
-
-
-
