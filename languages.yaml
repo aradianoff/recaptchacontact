@@ -145,6 +145,17 @@ it:
     SUBJECT: "Nuovo contatto dal sito Grav!"
     RECIPIENT: "hello@example.com"
 
+    ADMIN:
+      HEADING: "Modulo di contatto"
+      TOGGLE:
+        HELP: "Se abilitato, il modulo verrà visualizzato in questa pagina."
+      RECIPIENT:
+        LABEL: "Inviare email a"
+        HELP: "Consigliato: il modulo invierà l'email di contatto a questo indirizzo"
+      SUBJECT:
+        LABEL: "Oggetto dell'email"
+        HELP: "Opzionale: se inserito, l'email conterrà questo oggetto."
+
     FIELDS:
       NAME:
         LABEL: "Nome"
