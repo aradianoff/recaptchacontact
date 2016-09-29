@@ -9,6 +9,18 @@ en:
     SUBJECT: "New contact from Grav site!"
     RECIPIENT: "hello@example.com"
 
+    ADMIN:
+      HEADING: "Contact Form"
+      TOGGLE:
+        HELP: "If enabled, the form will display on this page."
+      RECIPIENT:
+        LABEL: "Send Emails To"
+        HELP: "Recommended: the form will send the contact email to this address"
+      SUBJECT:
+        LABEL: "Email Subject"
+        HELP: "Optional: if entered, the email will contain this subject."
+
+
     FIELDS:
       NAME:
         LABEL: "Name"

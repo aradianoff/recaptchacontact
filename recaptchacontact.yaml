@@ -1,6 +1,6 @@
 enabled: true
 default_lang: en
 disable_css: false
-inject_template: true # will only impact simple pages; if false, just include the partials/recaptchaform or partials/container template manually
+inject_template: true # if false, include the partials/recaptchaform or partials/container template manually
 grecaptcha_sitekey: "your reCAPTCHA site key" # override in your /user/config/plugins/recaptchacontact.yaml
 grecaptcha_secret: "your secret-g-recaptcha-key" # override in your /user/config/plugins/recaptchacontact.yaml and keep it in a non-public repository

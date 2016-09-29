@@ -5,47 +5,46 @@
 {% endif %}
 
 <div> {# Twig or Parsedown will render this template as raw HTML without this DIV. #}
-    {% if not recaptchacontact.message %}
-        <form action="{{ target_slug }}" method="post" id="recaptchacontact">
-            <fieldset>
-                <h3>
-                    <legend class="legend">{{ recaptchacontact.form_legend ?:'RECAPTCHACONTACT.FORM_LEGEND'|t }}</legend>
-                </h3>
-
-                {# @todo: you can use to integrate with ajax response #}
-                <div id="recaptchacontact-messages"></div>
-
-                <div class="form-group">
-                    <label class="control-label" for="name">{{ recaptchacontact.fields.name.label ?:'RECAPTCHACONTACT.FIELDS.NAME.LABEL'|t }}</label>
-                    <input id="name" name="name" type="text" placeholder="{{ recaptchacontact.fields.name.placeholder ?:'RECAPTCHACONTACT.FIELDS.NAME.PLACEHOLDER'|t }}" class="form-control" />
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="email">{{ recaptchacontact.fields.email.label ?:'RECAPTCHACONTACT.FIELDS.EMAIL.LABEL'|t }}</label>
-                    <input id="email" name="email" type="text" placeholder="{{ recaptchacontact.fields.email.placeholder ?:'RECAPTCHACONTACT.FIELDS.EMAIL.PLACEHOLDER'|t }}" class="form-control" />
-                 </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="message">{{ recaptchacontact.fields.message.label ?:'RECAPTCHACONTACT.FIELDS.MESSAGE.LABEL'|t }}</label>
-                    <textarea class="form-control" id="message" name="message" placeholder="{{ recaptchacontact.fields.message.placeholder ?:'RECAPTCHACONTACT.FIELDS.MESSAGE.PLACEHOLDER'|t }}" rows="5"></textarea>
-                </div>
-
-                <div class="g-recaptcha" data-sitekey={{ recaptchacontact.grecaptcha_sitekey }}></div>
-
-                <div class="form-group antispam-div">
-                    <label class="control-label" for="antispam">{{ 'RECAPTCHACONTACT.FIELDS.ANTISPAM.LABEL'|t }}</label>
-                    <input id="antispam" name="antispam" type="text" placeholder="{{ 'RECAPTCHACONTACT.FIELDS.ANTISPAM.PLACEHOLDER'|t }}" class="form-control" />
-                </div>
-
-                <div class="form-group">
-                    <div class="text-right">
-                        <button type="submit" class="button">{{ recaptchacontact.fields.submit.label ?:'RECAPTCHACONTACT.FIELDS.SUBMIT.LABEL'|t }}</button>
-                    </div>
-                </div>
-            </fieldset>
-        </form>
-    {% else %}
+    {% if recaptchacontact.message %}
         {% include 'partials/recaptcha_message.html.twig' with { 'message': recaptchacontact.message } %}
     {% endif %}
-    <script>$.getScript("https://www.google.com/recaptcha/api.js?hl={{ grav.language.getActive ?: recaptchacontact.default_lang }}");</script>
+    <form action="{{ target_slug }}" method="post" id="recaptchacontact" class="recaptcha-form">
+        <fieldset>
+            <h3>
+                <legend class="legend">{{ recaptchacontact.form_legend ?:'RECAPTCHACONTACT.FORM_LEGEND'|t }}</legend>
+            </h3>
+
+            {# @todo: you can use to integrate with ajax response #}
+            <div id="recaptchacontact-messages"></div>
+
+            <div class="recaptcha-form-group form-group">
+                <label class="control-label" for="name" class="recaptcha-label">{{ recaptchacontact.fields.name.label ?:'RECAPTCHACONTACT.FIELDS.NAME.LABEL'|t }}</label>
+                <input id="name" name="name" type="text" placeholder="{{ recaptchacontact.fields.name.placeholder ?:'RECAPTCHACONTACT.FIELDS.NAME.PLACEHOLDER'|t }}" class="recaptcha-field form-control" value="{{ recaptchacontact.session.name }}"/>
+            </div>
+
+            <div class="recaptcha-form-group form-group">
+                <label class="recaptcha-label control-label" for="email">{{ recaptchacontact.fields.email.label ?:'RECAPTCHACONTACT.FIELDS.EMAIL.LABEL'|t }}</label>
+                <input id="email" name="email" type="text" placeholder="{{ recaptchacontact.fields.email.placeholder ?:'RECAPTCHACONTACT.FIELDS.EMAIL.PLACEHOLDER'|t }}" class="recaptcha-field form-control" value="{{ recaptchacontact.session.email }}"/>
+             </div>
+
+            <div class="recaptcha-form-group form-group">
+                <label class="recaptcha-label control-label" for="message">{{ recaptchacontact.fields.message.label ?:'RECAPTCHACONTACT.FIELDS.MESSAGE.LABEL'|t }}</label>
+                <textarea class="recaptcha-textarea form-control" id="message" name="message" placeholder="{{ recaptchacontact.fields.message.placeholder ?:'RECAPTCHACONTACT.FIELDS.MESSAGE.PLACEHOLDER'|t }}" rows="5">{{ recaptchacontact.session.message }}</textarea>
+            </div>
+
+            <div class="g-recaptcha" data-sitekey={{ recaptchacontact.grecaptcha_sitekey }}></div>
+
+            <div class="recaptcha-hidden form-group antispam-div">
+                <label class="control-label" for="antispam">{{ 'RECAPTCHACONTACT.FIELDS.ANTISPAM.LABEL'|t }}</label>
+                <input id="antispam" name="antispam" type="text" placeholder="{{ 'RECAPTCHACONTACT.FIELDS.ANTISPAM.PLACEHOLDER'|t }}" class="form-control" />
+            </div>
+
+            <div class="recaptcha-submit form-group">
+                <div class="text-right">
+                    <button type="submit" class="recaptcha-submit-button button">{{ recaptchacontact.fields.submit.label ?:'RECAPTCHACONTACT.FIELDS.SUBMIT.LABEL'|t }}</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl={{ grav.language.getActive ?: recaptchacontact.default_lang }}" async></script>
 </div>
