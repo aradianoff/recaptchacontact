@@ -1,8 +1,31 @@
+<<<<<<< HEAD
+=======
+# Don't try to set the legend, subject, and recipient here.
+# That's best done in header of the page to which you're adding the form.
+# All of these settings can be overriden on a page-by-page basis,
+# as described in the README file.
+
+>>>>>>> upstream/master
 en:
   RECAPTCHACONTACT:
     FORM_LEGEND: "Contact me"
     SUBJECT: "New contact from Grav site!"
     RECIPIENT: "hello@example.com"
+<<<<<<< HEAD
+=======
+
+    ADMIN:
+      HEADING: "Contact Form"
+      TOGGLE:
+        HELP: "If enabled, the form will display on this page."
+      RECIPIENT:
+        LABEL: "Send Emails To"
+        HELP: "Recommended: the form will send the contact email to this address"
+      SUBJECT:
+        LABEL: "Email Subject"
+        HELP: "Optional: if entered, the email will contain this subject."
+
+>>>>>>> upstream/master
 
     FIELDS:
       NAME:
@@ -29,7 +52,10 @@ en:
       ERROR: "Oops! There was a problem with your submission. Please complete the form and try again."
       FAIL: "Oops! Something went wrong and we couldn't send your message."
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/master
 de:
   RECAPTCHACONTACT:
     FORM_LEGEND: "Kontaktiere mich"
@@ -91,6 +117,37 @@ es:
       SUCCESS: "¡Gracias! Tu mensaje ha sido enviado."
       ERROR: "¡Uy! Hubo un problema con el envío. Por favor, rellena el formulario de nuevo."
       FAIL: "¡Uy! Algo salió mal y no se pudo enviar el mensaje."
+      
+fr:
+  RECAPTCHACONTACT:
+    FORM_LEGEND: "Me contacter"
+    SUBJECT: "Nouveau contact du site de Grav !"
+    RECIPIENT: "hello@exemple.com"
+
+    FIELDS:
+      NAME:
+        LABEL: "Nom"
+        PLACEHOLDER: "Ajoutez votre nom"
+
+      EMAIL:
+        LABEL: "E-mail"
+        PLACEHOLDER: "Ajoutez votre e-mail"
+
+      MESSAGE:
+        LABEL: "Message"
+        PLACEHOLDER: "Ajoutez votre message"
+
+      ANTISPAM:
+        LABEL: "Antispam"
+        PLACEHOLDER: "Veuillez laisser ce champ vide pour l'antispam"
+
+      SUBMIT:
+        LABEL: "Envoyer"
+
+    MESSAGES:
+      SUCCESS: "Merci ! Votre message a bien été envoyé."
+      ERROR: "Oups ! Une erreur s'est produite lors de l'envoi. Veuillez renseigner à nouveau le formulaire et réessayer."
+      FAIL: "Oups ! Une erreur s'est produite et il a été impossible d'envoyer votre message."
 
 it:
   RECAPTCHACONTACT:
