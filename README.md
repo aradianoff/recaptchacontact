@@ -4,7 +4,7 @@
 
 **reCAPTCHA Contact** is a [Grav](http://github.com/getgrav/grav) v0.9.33+ plugin that adds a contact form in Grav pages with [Google reCAPTCHA](https://www.google.com/recaptcha/) validation to filter Spam Robots and includes multilanguage support. Currently English (en), Italian (it), Spanish (es), German (de), and Russian (ru) translations are included by default in the `languages.yaml`.
 
-**reCAPTCHA Contact** is fully integrated with the Grav admin panel, can be completely controlled through the plugin settings, and can be displayed by simply enabling the form on any page.
+reCAPTCHA Contact is fully integrated with the Grav admin panel, can be completely controlled through the plugin settings, and can be displayed by simply enabling the form on any page.
 
 ## Getting Started
 
@@ -18,19 +18,23 @@ Install the plugin by going to the admin panel, selecting "Plugins", and then cl
 4. Choose a page to put the form on and select the "Contact Form" tab.
 5. Enable the contact form and put your email address in the "Send Emails To" field.
 6. Test and enjoy!
-
-  
+<br />
+<br />
+<br />
   
 ----
 
+<br />
+<br />
+<br />
 
 ## Advanced Information
 
-### Installation
+### Alternate Installation
 
 Installing the plugin can be done in one of two ways. Our GPM (Grav Package Manager) installation method enables you to quickly and easily install the plugin with a simple terminal command, while the manual method enables you to do so via a zip file.
 
-#### GPM Installation (preferred)
+#### Command Line (GPM) Installation (preferred)
 
 The simplest way to install this plugin is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm) through your system's Terminal (also called the command line).  From the root of your Grav install type:
 
