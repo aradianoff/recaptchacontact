@@ -1,5 +1,5 @@
 name: reCAPTCHA Contact
-version: 1.0.9
+version: 2.0.1
 description: "This plugin adds contact form features for sending email with google reCAPTCHA 2.0 validation."
 icon: paper-plane-o
 author:
@@ -33,7 +33,7 @@ form:
       help: "Fallback default language code for non-multilang sites."
       validate:
         type: text
-        
+
     disable_css:
       type: toggle
       label: Disable Plugin-specific CSS
@@ -44,7 +44,7 @@ form:
           0: 'False'
       validate:
            type: bool
-                   
+
     inject_template:
       type: toggle
       label: Inject Contact Template Automatically
@@ -73,4 +73,3 @@ form:
       help: "Your Google reCaptcha Secret key"
       validate:
         type: text
-
