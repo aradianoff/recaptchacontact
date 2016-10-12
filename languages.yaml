@@ -1,27 +1,13 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> upstream/master
 # Don't try to set the legend, subject, and recipient here.
 # That's best done in header of the page to which you're adding the form.
 # All of these settings can be overriden on a page-by-page basis,
 # as described in the README file.
 
-<<<<<<< HEAD
->>>>>>> upstream/master
-=======
->>>>>>> upstream/master
 en:
   RECAPTCHACONTACT:
     FORM_LEGEND: "Contact me"
     SUBJECT: "New contact from Grav site!"
     RECIPIENT: "hello@example.com"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> upstream/master
 
     ADMIN:
       HEADING: "Contact Form"
@@ -34,10 +20,6 @@ en:
         LABEL: "Email Subject"
         HELP: "Optional: if entered, the email will contain this subject."
 
-<<<<<<< HEAD
->>>>>>> upstream/master
-=======
->>>>>>> upstream/master
 
     FIELDS:
       NAME:
@@ -64,13 +46,6 @@ en:
       ERROR: "Oops! There was a problem with your submission. Please complete the form and try again."
       FAIL: "Oops! Something went wrong and we couldn't send your message."
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> upstream/master
-=======
->>>>>>> upstream/master
 de:
   RECAPTCHACONTACT:
     FORM_LEGEND: "Kontaktiere mich"
@@ -222,6 +197,18 @@ ru:
     FORM_LEGEND: "Контакты"
     SUBJECT: "Новый контакт от Grav!"
     RECIPIENT: "hello@example.com"
+
+
+    ADMIN:
+      HEADING: "Контактная форма"
+      TOGGLE:
+        HELP: "Если активирована, то форма будет отображаться на данной странице."
+      RECIPIENT:
+        LABEL: "Адрес получателя"
+        HELP: "Обязателен: форма будет посылать контактный адрес электронной почты по этому адресу"
+      SUBJECT:
+        LABEL: "Тема письма"
+        HELP: "Не обязательна: если введена, то email будет содержать данную тему."
 
     FIELDS:
       NAME:
