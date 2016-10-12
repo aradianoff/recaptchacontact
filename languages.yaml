@@ -51,6 +51,17 @@ de:
     FORM_LEGEND: "Kontaktiere mich"
     SUBJECT: "[Grav] Kontaktanfrage"
     RECIPIENT: "name@provider.de"
+    
+    ADMIN:
+      HEADING: "Kontaktformular"
+      TOGGLE:
+        HELP: "Falls aktiviert wird das Kontaktformular auf diese Seite angezeigt."
+      RECIPIENT:
+        LABEL: "E-Mail senden an"
+        HELP: "Empfohlen: Sendet das Formular an die angegebene Adresse."
+      SUBJECT:
+        LABEL: "Betreff"
+        HELP: "Optional: Falls angegeben, überschreibt es den Betreff der E-Mail."
 
     FIELDS:
       NAME:
