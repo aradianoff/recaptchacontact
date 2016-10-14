@@ -1,6 +1,6 @@
 <?php
 /**
- * reCAPTCHA Contact v2.0.1
+ * reCAPTCHA Contact v2.0.2
  *
  * This plugin adds contact form features for sending email with
  * google reCAPTCHA 2.0  validation.
