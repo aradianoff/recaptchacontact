@@ -1,3 +1,12 @@
+# v2.1.0
+## 1/7/2017
+
+1. [](#new)
+    * Added option to have a data-callback for the Google Recaptcha
+    
+   [](#improved)
+    * Added scroll anchor so the page scrolls to the message when there is one.
+
 # v2.0.1
 ## 10/11/2016
 

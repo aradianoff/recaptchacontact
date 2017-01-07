@@ -1,10 +1,10 @@
 {% if page.modular == true %}
-     {% set target_slug = page.parent.slug %}
+    {% set target_slug = page.parent.slug %}
 {% else %}
     {% set target_slug = page.slug %}
 {% endif %}
 
-<div> {# Twig or Parsedown will render this template as raw HTML without this DIV. #}
+<div class="recaptcha-form-container" id="contact-form"> {# Twig or Parsedown will render this template as raw HTML without this DIV. #}
     {% if recaptchacontact.message %}
         {% include 'partials/recaptcha_message.html.twig' with { 'message': recaptchacontact.message } %}
     {% endif %}
@@ -25,14 +25,14 @@
             <div class="recaptcha-form-group form-group">
                 <label class="recaptcha-label control-label" for="email">{{ recaptchacontact.fields.email.label ?:'RECAPTCHACONTACT.FIELDS.EMAIL.LABEL'|t }}</label>
                 <input id="email" name="email" type="text" placeholder="{{ recaptchacontact.fields.email.placeholder ?:'RECAPTCHACONTACT.FIELDS.EMAIL.PLACEHOLDER'|t }}" class="recaptcha-field form-control" value="{{ recaptchacontact.session.email }}"/>
-             </div>
+            </div>
 
             <div class="recaptcha-form-group form-group">
                 <label class="recaptcha-label control-label" for="message">{{ recaptchacontact.fields.message.label ?:'RECAPTCHACONTACT.FIELDS.MESSAGE.LABEL'|t }}</label>
                 <textarea class="recaptcha-textarea form-control" id="message" name="message" placeholder="{{ recaptchacontact.fields.message.placeholder ?:'RECAPTCHACONTACT.FIELDS.MESSAGE.PLACEHOLDER'|t }}" rows="5">{{ recaptchacontact.session.message }}</textarea>
             </div>
 
-            <div class="g-recaptcha" data-sitekey={{ recaptchacontact.grecaptcha_sitekey }}></div>
+            <div class="g-recaptcha" data-sitekey={{ recaptchacontact.grecaptcha_sitekey }}{% if recaptchacontact.grecaptcha_callback %} data-callback="{{ recaptchacontact.grecaptcha_callback }}"{% endif %}></div>
 
             <div class="recaptcha-hidden form-group antispam-div">
                 <label class="control-label" for="antispam">{{ 'RECAPTCHACONTACT.FIELDS.ANTISPAM.LABEL'|t }}</label>
@@ -46,5 +46,8 @@
             </div>
         </fieldset>
     </form>
-    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl={{ grav.language.getActive ?: recaptchacontact.default_lang }}" async></script>
+    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl={{ grav.language.getActive ?: recaptchacontact.default_lang }}" defer></script>
+    {% if recaptchacontact.message %}
+        {% include 'partials/recaptcha_js.html.twig' %}
+    {% endif %}
 </div>

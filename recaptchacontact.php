@@ -1,6 +1,6 @@
 <?php
 /**
- * reCAPTCHA Contact v2.0.2
+ * reCAPTCHA Contact v2.1.0
  *
  * This plugin adds contact form features for sending email with
  * google reCAPTCHA 2.0  validation.
@@ -8,10 +8,10 @@
  * Licensed under the MIT license, see LICENSE.
  *
  * @package     recaptchacontact
- * @version     2.0.1
+ * @version     2.1.0
  * @link        <https://github.com/aradianoff/recaptchacontact>
  * @author      aRadianOff - Inés Naya <inesnaya@aradianoff.com>
- * @copyright   2015, Inés Naya - aRadianOff
+ * @copyright   2017, Inés Naya - aRadianOff
  * @license     <http://opensource.org/licenses/MIT>        MIT
  */
 
