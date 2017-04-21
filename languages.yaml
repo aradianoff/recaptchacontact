@@ -234,3 +234,46 @@ ru:
       SUCCESS: "Спасибо! Ваше сообщение было отправлено."
       ERROR: "Упс! Произошла ошибка при отправке вашего сообщения. Пожалуйста заполните форму и попробуйте снова."
       FAIL: "Упс! Что-то пошло не так и мы не можем отправить ваше сообщение."
+
+tr:
+  RECAPTCHACONTACT:
+    FORM_LEGEND: "İletişim"
+    SUBJECT: "Grav'dan yeni mesaj var!"
+    RECIPIENT: "merhaba@ornek.com"
+
+    ADMIN:
+      HEADING: "İletişim Formu"
+      TOGGLE:
+        HELP: "Aktifleştirildiğinde form bu sayfada görünür."
+      RECIPIENT:
+        LABEL: "Mesajları gönder"
+        HELP: "Önerilen ayar: form üzerinden gelen mesajlar bu adrese gönderilecek"
+      SUBJECT:
+        LABEL: "E-posta Başlığı"
+        HELP: "Opsiyonel ayar: boş geçilmezse, e-posta bu başlığı içerek."
+
+
+    FIELDS:
+      NAME:
+        LABEL: "İsim"
+        PLACEHOLDER: "İsminizi girin"
+
+      EMAIL:
+        LABEL: "E-posta"
+        PLACEHOLDER: "E-posta adresinizi girin"
+
+      MESSAGE:
+        LABEL: "Mesaj"
+        PLACEHOLDER: "Mesajınızı girin"
+
+      ANTISPAM:
+        LABEL: "Antispam"
+        PLACEHOLDER: "Antispam için lütfen bu alanı boş bırakın."
+
+      SUBMIT:
+        LABEL: "Gönder"
+
+    MESSAGES:
+      SUCCESS: "Teşekkürler! Mesajınız başarıyla gönderildi!"
+      ERROR: "Oops! Mesajınız gönderilirken bir hatayla karşılaşıldı. Lütfen forma girdiğiniz verileri kontrol ederek tekrar deneyin."
+      FAIL: "Oops! Bir şeyler yanlış gitti ve mesajınızı gönderemedik."
