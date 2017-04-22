@@ -1,3 +1,9 @@
+# v2.1.1
+## 04/22/2016
+
+1. [](#improved)
+    * Added Turkish (TR) translation thanks to @msdundar.
+
 # v2.1.0
 ## 1/7/2017
 
