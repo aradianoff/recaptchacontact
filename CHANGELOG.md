@@ -1,3 +1,11 @@
+# v2.1.2
+## 06/01/2017
+
+1. [](#improved)
+    * Added Polish (TR) translation thanks to @BartoszBartniczak.
+2. [](#bugfix)
+    * Fixed bug related to newest version of Grav (issue #36), also thanks to @BartoszBartniczak.
+
 # v2.1.1
 ## 04/22/2016
 
