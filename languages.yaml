@@ -277,3 +277,46 @@ tr:
       SUCCESS: "Teşekkürler! Mesajınız başarıyla gönderildi!"
       ERROR: "Oops! Mesajınız gönderilirken bir hatayla karşılaşıldı. Lütfen forma girdiğiniz verileri kontrol ederek tekrar deneyin."
       FAIL: "Oops! Bir şeyler yanlış gitti ve mesajınızı gönderemedik."
+
+pl:
+  RECAPTCHACONTACT:
+    FORM_LEGEND: "Kontakt"
+    SUBJECT: "Nowy kontakt ze strony Grav!"
+    RECIPIENT: "hello@example.com"
+
+    ADMIN:
+      HEADING: "Formularz kontaktowy"
+      TOGGLE:
+        HELP: "Jeśli zaznaczysz tę opcję, formularz pojawi się na tej stronie."
+      RECIPIENT:
+        LABEL: "Wyślij emaile na adres:"
+        HELP: "Pomoc: formularz będzie wysyłał wiadomości na ten adres email."
+      SUBJECT:
+        LABEL: "Temat wiadomości"
+        HELP: "Opcjonalne: jeśli zdefiniujesz to pole, email będzie zawierał ten temat."
+
+
+    FIELDS:
+      NAME:
+        LABEL: "Imię"
+        PLACEHOLDER: "Podaj swoje imię"
+
+      EMAIL:
+        LABEL: "Email"
+        PLACEHOLDER: "Podaj swój email"
+
+      MESSAGE:
+        LABEL: "Wiadomość"
+        PLACEHOLDER: "Treść wiadomości"
+
+      ANTISPAM:
+        LABEL: "Zabezpieczenie antyspamowe"
+        PLACEHOLDER: "Pozostaw to pole puste"
+
+      SUBMIT:
+        LABEL: "Wyślij."
+
+    MESSAGES:
+      SUCCESS: "Dziękuję! Twoja wiadomość została wysłana."
+      ERROR: "Ups! Nie wszystkie pola zostały wypełnione prawidłowo. Proszę, uzupełnij formularz zgodnie ze wskazówkami i wyślij go ponownie."
+      FAIL: "Ups! Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie poźniej."
