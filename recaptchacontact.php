@@ -84,7 +84,7 @@ class ReCaptchaContactPlugin extends Plugin
 
     public function onPageInitialized()
     {
-        if (!empty($this->grav['page']->collection())){
+        if (!empty($this->grav['page']->collection()) && $this->grav['page']->collection()->count() > 0){
             $collection = $this->grav['page']->collection();
 
             /** @var $page Page */
