@@ -228,9 +228,9 @@ class ReCaptchaContactPlugin extends Plugin
         $secretkey = $this->grav['config']->get('plugins.recaptchacontact.grecaptcha_secret');
 
         if (!empty($grecaptcha)) {
-//           $response=json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretkey."&response=".$grecaptcha), true);
+           $response=json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretkey."&response=".$grecaptcha), true);
         }
-        return true;
+
         return (empty($name) or empty($message) or empty($email) or $antispam or empty($grecaptcha) or $response['success']==false) ? false : true;
     }
 
