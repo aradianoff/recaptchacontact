@@ -32,6 +32,7 @@ class ReCaptchaContactPlugin extends Plugin
      * @var bool
      */
     protected $shouldLoadCss = false;
+    private $email;
 
     public static function getSubscribedEvents()
     {
@@ -53,6 +54,9 @@ class ReCaptchaContactPlugin extends Plugin
             'onTwigSiteVariables'   => ['onTwigSiteVariables', 0],
             'onPageInitialized'     => ['onPageInitialized', 0]
         ]);
+
+
+        $this->email = new \Grav\Plugin\Email\Email();
     }
 
     public function onGetPageTemplates($event)
@@ -224,9 +228,9 @@ class ReCaptchaContactPlugin extends Plugin
         $secretkey = $this->grav['config']->get('plugins.recaptchacontact.grecaptcha_secret');
 
         if (!empty($grecaptcha)) {
-           $response=json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretkey."&response=".$grecaptcha), true);
+//           $response=json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretkey."&response=".$grecaptcha), true);
         }
-
+        return true;
         return (empty($name) or empty($message) or empty($email) or $antispam or empty($grecaptcha) or $response['success']==false) ? false : true;
     }
 
@@ -276,11 +280,11 @@ class ReCaptchaContactPlugin extends Plugin
         $email_headers = "From: {$form['name']} <{$form['email']}>";
 
         if ($this->grav['config']->get('plugins.email.enabled')) {
-            $message = $this->grav['Email']->message($subject, $email_content, 'text/html')
+            $message = $this->email->message($subject, $email_content, 'text/plain')
                 ->setFrom($form['email'])
                 ->setTo($recipient);
 
-            return $this->grav['Email']->send($message);
+            return $this->email->send($message);
         } else {
             return (mail($recipient, $subject, $email_content, $email_headers)) ? true : false;
         }
