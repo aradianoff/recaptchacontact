@@ -32,7 +32,7 @@
                 <textarea class="recaptcha-textarea form-control" id="message" name="message" placeholder="{{ recaptchacontact.fields.message.placeholder ?:'RECAPTCHACONTACT.FIELDS.MESSAGE.PLACEHOLDER'|t }}" rows="5">{{ recaptchacontact.session.message }}</textarea>
             </div>
 
-            <div class="g-recaptcha" data-sitekey={{ recaptchacontact.grecaptcha_sitekey }}{% if recaptchacontact.grecaptcha_callback %} data-callback="{{ recaptchacontact.grecaptcha_callback }}"{% endif %}></div>
+            <div class="g-recaptcha" data-sitekey="{{ config.plugins.recaptchacontact.grecaptcha_sitekey }}"{% if config.plugins.recaptchacontact.grecaptcha_callback %} data-callback="{{ recaptchacontact.grecaptcha_callback }}"{% endif %}{% if config.plugins.recaptchacontact.compact %} data-size="compact"{% endif %}></div>
 
             <div class="recaptcha-hidden form-group antispam-div">
                 <label class="control-label" for="antispam">{{ 'RECAPTCHACONTACT.FIELDS.ANTISPAM.LABEL'|t }}</label>
