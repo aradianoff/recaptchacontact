@@ -45,6 +45,17 @@ form:
       validate:
            type: bool
 
+    compact:
+      type: toggle
+      label: Compact Mode
+      highlight: 0
+      default: 0
+      options:
+          1: 'True'
+          0: 'False'
+      validate:
+           type: bool
+
     inject_template:
       type: toggle
       label: Inject Contact Template Automatically
