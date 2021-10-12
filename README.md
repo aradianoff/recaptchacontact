@@ -12,7 +12,7 @@ Install the plugin by going to the admin panel, selecting "Plugins", and then cl
 
 #### Simple Configuration:
 
-1. Go to [Google Recaptcha](https://www.google.com/recaptcha/intro/index.html), login, and get your recaptcha keys.
+1. Go to [Google Recaptcha](https://www.google.com/recaptcha/intro/index.html), login, and get your recaptcha v2 keys.
 2. Back in Grav, go to the Plugins page again and click `reCAPTCHA Contact`.
 3. Enter the site key and secret key in the correct fields.
 4. Choose a page to put the form on and select the "Contact Form" tab.
