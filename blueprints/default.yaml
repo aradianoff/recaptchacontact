@@ -23,8 +23,8 @@ form:
               label: RECAPTCHACONTACT.ADMIN.HEADING
               help: RECAPTCHACONTACT.ADMIN.TOGGLE.HELP
               options:
-                false: PLUGIN_ADMIN.DISABLED
-                true: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+                1: PLUGIN_ADMIN.ENABLED
               validate:
                 type: bool
 
